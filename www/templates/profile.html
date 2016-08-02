@@ -1,20 +1,30 @@
 <ion-view view-title="Profile">
   <ion-content>
-        <form id="profile-form" class="list">
-            <ion-item class="item-avatar" id="profile-list-item13">
-                <h2>First Name, Last Name</h2>
-            </ion-item>
-            <label class="item item-input " id="profile-textarea3">
-                <span class="input-label">Skill Level</span><textarea placeholder=""></textarea>
-            </label>
-            <ion-item id="profile-list-item10" class="  ">Competitive</ion-item>
-            <div class="spacer" style="width: 300px; height: 40px;"></div>
-            <label class="item item-input " id="profile-input8">
-                <span class="input-label">Optional Bio</span>
-                <input type="text" placeholder="">
-            </label>
-            <div class="spacer" style="width: 300px; height: 40px;"></div>
-        </form>
-        <a id="profile-button18" class=" button button-positive  button-block button-clear ">Edit Profile</a>
-    </ion-content>
+    <div class="profile-top"> <!-- Top half of page -->
+    <div class="profile-pic"> <img src="{{athlete.pic}}" alt="{{athlete.name}}"></div>
+    <h4 class="profile-name">{{athlete.name}}</h4>
+  </div>
+
+
+  <!-- Bottom half of page -->
+
+
+  <div class="item item-divider profile-divider">
+  Info
+  </div>
+  <a class="item item-unselectable">
+    <h2><b>Year: </b>{{athlete.gradYear}}</h2>
+  </a>
+  <a class="item item-unselectable">
+    <h2><b>Bio:</b> {{athlete.bio}}</h2>
+  </a>
+  <a class="item item-unselectable">
+    <h2><b>Skill Level:</b> {{athlete.skillLevel}}</h2>
+  </a>
+
+  <div class="spacer" style="width: 300px; height: 18px;"></div>
+
+  <button class="button button-positive button-block button-clear" ng-click="showProfilePopup(athlete)">Edit Profile</button>
+
+
 </ion-view>

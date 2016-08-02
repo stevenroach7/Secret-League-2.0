@@ -7,11 +7,6 @@
 }
 
 
-
-
-
-
-
 .time-display, .input-label {
   display: inline-block;
 }
@@ -25,3 +20,28 @@
 .popup.button_set {
   color: blue;
 }*/
+
+
+
+/*profile page specific styling*/
+
+.profile-top {
+  background: #424242;
+  padding-top: 10px;
+}
+
+.profile-name {
+  text-align: center;
+  padding-bottom: 15px;
+  color: #FFF;
+}
+
+.profile-pic {
+  max-width: 100%;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}

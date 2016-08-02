@@ -55,4 +55,46 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('ProfileCtrl', function($scope) {});
+.controller('ProfileCtrl', function($scope, TestProfileData, $ionicPopup) {
+
+  $scope.athlete = TestProfileData.getAthlete();
+
+
+
+    $scope.showProfilePopup = function(athlete) {
+
+      $scope.data = {}; // Temporary variable used to get workoutNotes input data.
+      $scope.data.name = athlete.name;
+      $scope.data.bio = athlete.bio;
+      $scope.data.skillLevel = athlete.skillLevel;
+      var editProfilePopup = $ionicPopup.show({
+        template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <input type="tel" ng-model="data.skillLevel">',
+
+        title: 'Edit Profile',
+        subTitle: 'Mix it up.',
+        scope: $scope,
+        buttons: [{
+          text: 'Cancel'
+        }, {
+          text: 'Submit',
+          type: 'button-positive',
+          onTap: function(e) {
+            return $scope.data;
+          }
+        }]
+      });
+
+      editProfilePopup.then(function(res) {
+        if (res) {
+          //TODO: Check to make user input is valid.
+          athlete.name = res.name;
+          athlete.bio= res.bio;
+          athlete.skillLevel = res.skillLevel;
+        }
+
+      });
+    };
+
+
+
+});

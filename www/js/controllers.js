@@ -71,10 +71,10 @@ angular.module('starter.controllers', [])
 
 
       var editProfilePopup = $ionicPopup.show({
-        template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <input type="tel" ng-model="data.skillLevel"> Favorite Athlete: <input type="text" ng-model="data.favAthlete">',
+        template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <br /><select ng-model="data.skillLevel"><option>Casual</option><option>Competitive</option><option>Both</option></select> <br />Favorite Athlete: <input type="text" ng-model="data.favAthlete">',
 
         title: 'Edit Profile',
-        subTitle: 'Mix it up.',
+        subTitle: '',
         scope: $scope,
         buttons: [{
           text: 'Cancel'

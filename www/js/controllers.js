@@ -52,6 +52,19 @@ angular.module('starter.controllers', [])
     ionicTimePicker.openTimePicker(ipObj1);
   };
 
+
+  $scope.slider = {
+    value: 10,
+    options: {
+      floor: 2,
+      ceil: 30
+    }
+  };
+
+
+
+
+
 })
 
 

@@ -9,6 +9,7 @@
       gradYear: "2018",
       pic: "img/Graham_Brett.jpg",
       skillLevel: "Competitive",
+      favAthlete: "Byron Leftwich",
       bio: "Ready to play."
 
     };

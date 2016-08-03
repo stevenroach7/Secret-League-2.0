@@ -67,8 +67,11 @@ angular.module('starter.controllers', [])
       $scope.data.name = athlete.name;
       $scope.data.bio = athlete.bio;
       $scope.data.skillLevel = athlete.skillLevel;
+      $scope.data.favAthlete = athlete.favAthlete;
+
+
       var editProfilePopup = $ionicPopup.show({
-        template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <input type="tel" ng-model="data.skillLevel">',
+        template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <input type="tel" ng-model="data.skillLevel"> Favorite Athlete: <input type="text" ng-model="data.favAthlete">',
 
         title: 'Edit Profile',
         subTitle: 'Mix it up.',
@@ -88,8 +91,9 @@ angular.module('starter.controllers', [])
         if (res) {
           //TODO: Check to make user input is valid.
           athlete.name = res.name;
-          athlete.bio= res.bio;
+          athlete.bio = res.bio;
           athlete.skillLevel = res.skillLevel;
+
         }
 
       });

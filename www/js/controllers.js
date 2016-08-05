@@ -28,7 +28,19 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('CreateGameCtrl', function($scope, ionicTimePicker) {
+.controller('CreateGameCtrl', function($scope, $location, TestGamesData, ionicTimePicker) {
+
+
+  $scope.gameOptions = {
+    date: null,
+    time: 1,
+    sport: null,
+    place: null,
+    skillLevel: null,
+    minPlayers: null,
+    maxPlayers: null
+  };
+
 
 
 
@@ -47,19 +59,51 @@ angular.module('starter.controllers', [])
     setLabel: 'Set'    //Optional
   };
 
-
   $scope.chooseTime = function() {
     ionicTimePicker.openTimePicker(ipObj1);
   };
 
-
   $scope.slider = {
-    value: 10,
+    min: 5,
+    max: 15,
     options: {
       floor: 2,
-      ceil: 30
+      ceil: 20
     }
   };
+
+  $scope.games = TestGamesData.getGames();
+
+  $scope.createGame = function() {
+
+    $scope.gameOptions.minPlayers = $scope.slider.min;
+    $scope.gameOptions.maxPlayers = $scope.slider.max;
+
+
+    // Check gameOptions for valid input.
+    // if (!$scope.gameOptions.date || !$scope.gameOptions.time || !$scope.gameOptions.sport || !$scope.gameOptions.place || !$scope.gameOptions.skillLevel) {
+    //   console.log('invalid input');
+    //
+    // } else {
+
+      $scope.games.push($scope.gameOptions);
+      // $location.path('find-game.html');
+
+      console.log($location.path());
+
+    // }
+
+
+
+
+
+
+    console.log($scope.games);
+
+
+  };
+
+  console.log($scope.games);
 
 
 

@@ -22,6 +22,22 @@
 
   });
 
+  servMod.factory('TestGamesData', function() {
+
+
+    var games = [];
+
+
+    return {
+      getGames: function() {
+        return games;
+      }
+    };
+
+
+
+  });
+
 
 
 

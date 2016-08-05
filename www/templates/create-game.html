@@ -6,7 +6,7 @@
 
       <label class="item item-input" id="date-input">
         <span class="input-label">Date</span>
-        <input type="date">
+        <input type="date" ng-model="gameOptions.date">
       </label>
 
 
@@ -24,7 +24,7 @@
 
       <label class="item item-select" id="sport-input">
           <span class="input-label">Sport</span>
-          <select>
+          <select ng-model="gameOptions.sport">
               <option></option>
               <option>Basketball</option>
               <option>Soccer</option>
@@ -35,7 +35,7 @@
 
       <label class="item item-select">
           <span class="input-label">Place</span>
-          <select>
+          <select ng-model="gameOptions.place">
               <option></option>
               <option>Leonard Center Field House</option>
               <option>Leonard Center Alumni Gym</option>
@@ -45,7 +45,7 @@
       </label>
       <label class="item item-select">
           <span class="input-label">Skill Level</span>
-          <select>
+          <select ng-model="gameOptions.skillLevel">
               <option></option>
               <option>Casual</option>
               <option>Competitive</option>
@@ -53,11 +53,9 @@
           </select>
       </label>
       <label class="item item-select">
-          <span class="input-label">Maximum Players</span>
+          <span class="input-label">Number of Players</span>
           <div>
-            <rzslider
-             rz-slider-model="slider.value"
-             rz-slider-options="slider.options"></rzslider>
+            <rzslider rz-slider-model="slider.min" rz-slider-high="slider.max" rz-slider-options="slider.options"></rzslider>
           </div>
 
 
@@ -68,7 +66,7 @@
 
 
 
-      <a id="create-game-button" class=" button button-positive  button-block" ng-click=chooseTime()>Create Game</a>
+      <a id="create-game-button" class=" button button-positive  button-block" ng-click=createGame();>Create Game</a>
     </form>
   </ion-content>
 </ion-view>

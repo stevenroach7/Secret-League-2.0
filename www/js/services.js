@@ -5,9 +5,9 @@
   servMod.factory('TestProfileData', function() {
 
     var athlete = {
-      name: "Brett Graham",
+      name: "Joe Trier",
       gradYear: "2018",
-      pic: "img/Graham_Brett.jpg",
+      pic: "img/Trier_Joe.png",
       skillLevel: "Competitive",
       favAthlete: "Byron Leftwich",
       bio: "Ready to play."

@@ -30,10 +30,12 @@ angular.module('starter.controllers', [])
 
 .controller('CreateGameCtrl', function($scope, $location, TestGamesData, ionicTimePicker) {
 
+  var currentDate = new Date();
+  console.log((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds());
 
   $scope.gameOptions = {
     date: null,
-    time: 1,
+    time: (currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds(), // Current time in seconds
     sport: null,
     place: null,
     skillLevel: null,
@@ -50,10 +52,13 @@ angular.module('starter.controllers', [])
         console.log('Time not selected');
       } else {
         var selectedTime = new Date(val * 1000);
+        // $scope.gameOptions.time = selectedTime;
         console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
       }
     },
-    inputTime: 50400,   //Optional
+    // inputTime: $scope.gameOptions.time,   //Optional
+    // inputTime: 2569 + 3600,   //Optional
+
     format: 12,         //Optional
     step: 15,           //Optional
     setLabel: 'Set'    //Optional
@@ -80,25 +85,15 @@ angular.module('starter.controllers', [])
     $scope.gameOptions.maxPlayers = $scope.slider.max;
 
 
+
     // Check gameOptions for valid input.
-    // if (!$scope.gameOptions.date || !$scope.gameOptions.time || !$scope.gameOptions.sport || !$scope.gameOptions.place || !$scope.gameOptions.skillLevel) {
-    //   console.log('invalid input');
-    //
-    // } else {
+    if (!$scope.gameOptions.date || !$scope.gameOptions.time || !$scope.gameOptions.sport || !$scope.gameOptions.place || !$scope.gameOptions.skillLevel) {
+      console.log('invalid input');
 
+    } else {
       $scope.games.push($scope.gameOptions);
-      // $location.path('find-game.html');
-
-      console.log($location.path());
-
-    // }
-
-
-
-
-
-
-    console.log($scope.games);
+      $location.path('tab/find-game');
+    }
 
 
   };

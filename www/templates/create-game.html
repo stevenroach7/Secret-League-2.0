@@ -13,7 +13,7 @@
 
       <label class="item item-select" id="time-input" ng-click=chooseTime()>
           <span class="input-label">Time</span>
-          <span class="time-display">Time</span> <!-- model=time-->
+          <span class="time-display">{{gameOptions.time | secondsToTime}}</span> <!-- model=time-->
       </label>
 
 

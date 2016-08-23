@@ -1,3 +1,8 @@
+(function() {
+
+
+
+
 angular.module('starter.controllers', [])
 
 
@@ -45,22 +50,22 @@ angular.module('starter.controllers', [])
 
 
 
-
+  // TODO: Test for bugs and possibly switch to a different time picker
   var ipObj1 = {
     callback: function (val) {      //Mandatory
       if (typeof (val) === 'undefined') {
         console.log('Time not selected');
       } else {
         var selectedTime = new Date(val * 1000);
-        // $scope.gameOptions.time = selectedTime;
+        $scope.gameOptions.time = selectedTime + 3600;
         console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
       }
     },
-    // inputTime: $scope.gameOptions.time,   //Optional
+    inputTime: $scope.gameOptions.time - 3600,   //Optional
     // inputTime: 2569 + 3600,   //Optional
 
     format: 12,         //Optional
-    step: 15,           //Optional
+    step: 1,           //Optional
     setLabel: 'Set'    //Optional
   };
 
@@ -88,7 +93,7 @@ angular.module('starter.controllers', [])
 
     // Check gameOptions for valid input.
     if (!$scope.gameOptions.date || !$scope.gameOptions.time || !$scope.gameOptions.sport || !$scope.gameOptions.place || !$scope.gameOptions.skillLevel) {
-      console.log('invalid input');
+      console.log('invalid input'); // TODO: Create invalid input popup
 
     } else {
       $scope.games.push($scope.gameOptions);
@@ -151,6 +156,23 @@ angular.module('starter.controllers', [])
       });
     };
 
+  })
 
+  // Angular Filters
+  .filter('secondsToTime', function($filter) {
+    return function(sec) {
+      // TODO: Test this
+      var date = new Date(0, 0, 0);
+      date.setSeconds(sec);
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'pm' : 'am';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return strTime;
+    };
+  });
 
-});
+}());

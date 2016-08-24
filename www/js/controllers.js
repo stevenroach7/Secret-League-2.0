@@ -51,13 +51,14 @@ angular.module('starter.controllers', [])
 
 
   // TODO: Test for bugs and possibly switch to a different time picker
+  // https://github.com/rajeshwarpatlolla/ionic-timepicker
   var ipObj1 = {
     callback: function (val) {      //Mandatory
       if (typeof (val) === 'undefined') {
         console.log('Time not selected');
       } else {
         var selectedTime = new Date(val * 1000);
-        $scope.gameOptions.time = selectedTime + 3600;
+        $scope.gameOptions.time = selectedTime;
         console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
       }
     },
@@ -73,6 +74,8 @@ angular.module('starter.controllers', [])
     ionicTimePicker.openTimePicker(ipObj1);
   };
 
+
+  // https://github.com/angular-slider/angularjs-slider
   $scope.slider = {
     min: 5,
     max: 15,
@@ -89,14 +92,13 @@ angular.module('starter.controllers', [])
     $scope.gameOptions.minPlayers = $scope.slider.min;
     $scope.gameOptions.maxPlayers = $scope.slider.max;
 
-
-
     // Check gameOptions for valid input.
     if (!$scope.gameOptions.date || !$scope.gameOptions.time || !$scope.gameOptions.sport || !$scope.gameOptions.place || !$scope.gameOptions.skillLevel) {
       console.log('invalid input'); // TODO: Create invalid input popup
 
     } else {
       $scope.games.push($scope.gameOptions);
+      // TODO: Clear game options
       $location.path('tab/find-game');
     }
 

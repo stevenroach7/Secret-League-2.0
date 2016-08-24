@@ -10,7 +10,7 @@
       pic: "img/Trier_Joe.png",
       skillLevel: "Competitive",
       favAthlete: "Byron Leftwich",
-      bio: "Ready to play."
+      bio: "Always ready to play."
 
     };
 

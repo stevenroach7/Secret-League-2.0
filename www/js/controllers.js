@@ -54,7 +54,7 @@ angular.module('starter.controllers', [])
     maxPlayers: null
   };
 
-  // TODO: Test for bugs and possibly switch to a different time picker
+  // TODO: Test for bugs
   // https://github.com/rajeshwarpatlolla/ionic-timepicker
   var ipObj1 = {
     callback: function (val) {      //Mandatory
@@ -100,7 +100,18 @@ angular.module('starter.controllers', [])
 
     } else {
       $scope.games.push($scope.gameOptions);
-      // TODO: Clear game options
+      
+      // Clear game options so form rests when user returns to this tab
+      $scope.gameOptions = {
+        date: currentDate,
+        time: roundToNextHour((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds()), // Current time in seconds
+        sport: null,
+        place: null,
+        skillLevel: null,
+        minPlayers: null,
+        maxPlayers: null
+      };
+
       $location.path('tab/find-game');
     }
 

@@ -4,19 +4,17 @@
 
     <form id="create-game-form" class="list">
 
-      <label class="item" id="date-input">
+      <label class="item item-select item-input date-item">
         <span class="input-label">Date</span>
-        <input type="date" class='date-input' ng-model="gameOptions.date">
+        <input type="date" class="date-input" ng-model="gameOptions.date">
       </label>
 
-
-
-      <label class="item item-select" id="time-input" ng-click="chooseTime();">
+      <label class="item item-select" ng-click="chooseTime();">
           <span class="input-label">Time</span>
           <span class="time-display">{{gameOptions.time | secondsToTime}}</span> <!-- model=time-->
       </label>
 
-      <label class="item item-select" id="sport-input">
+      <label class="item item-select">
           <span class="input-label">Sport</span>
           <select ng-model="gameOptions.sport">
               <option></option>
@@ -25,7 +23,6 @@
               <option>Frisbee</option>
           </select>
       </label>
-
 
       <label class="item item-select">
           <span class="input-label">Place</span>

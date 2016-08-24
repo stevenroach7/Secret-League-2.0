@@ -29,8 +29,8 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope) {
+
 })
 
 .controller('CreateGameCtrl', function($scope, $location, TestGamesData, ionicTimePicker) {
@@ -38,17 +38,21 @@ angular.module('starter.controllers', [])
   var currentDate = new Date();
   console.log((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds());
 
+  var roundToNextHour = function(seconds) {
+    /* Helper function that takes a time in seconds and returns the time of the upcoming whole hour in seconds. */
+    var hours = Math.floor(seconds / 3600);
+    return (hours + 1) * 3600;
+  };
+
   $scope.gameOptions = {
-    date: null,
-    time: (currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds(), // Current time in seconds
+    date: currentDate,
+    time: roundToNextHour((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds()), // Current time in seconds
     sport: null,
     place: null,
     skillLevel: null,
     minPlayers: null,
     maxPlayers: null
   };
-
-
 
   // TODO: Test for bugs and possibly switch to a different time picker
   // https://github.com/rajeshwarpatlolla/ionic-timepicker
@@ -58,13 +62,11 @@ angular.module('starter.controllers', [])
         console.log('Time not selected');
       } else {
         var selectedTime = new Date(val * 1000);
-        $scope.gameOptions.time = selectedTime;
+        $scope.gameOptions.time = selectedTime.getUTCHours() * 3600 + selectedTime.getUTCMinutes() * 60 + selectedTime.getUTCSeconds();
         console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
       }
     },
-    inputTime: $scope.gameOptions.time - 3600,   //Optional
-    // inputTime: 2569 + 3600,   //Optional
-
+    inputTime: $scope.gameOptions.time,   //Optional
     format: 12,         //Optional
     step: 1,           //Optional
     setLabel: 'Set'    //Optional
@@ -104,13 +106,6 @@ angular.module('starter.controllers', [])
 
 
   };
-
-  console.log($scope.games);
-
-
-
-
-
 })
 
 

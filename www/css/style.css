@@ -6,9 +6,13 @@
   background: #fff; /* Set color when selected to be white. It already is white so it ends up having no effect. */
 }
 
+.date-item {
+  line-height: 300%;
+}
 
 .date-input {
-  float: right;
+  text-align: end;
+  padding-right: 14% !important;
 }
 
 .time-display, .input-label {
@@ -19,6 +23,7 @@
   float: right;
   margin-right: 10%;
   font-size: 15px;
+  margin-top: 2%;
 }
 
 

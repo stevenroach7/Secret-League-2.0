@@ -33,7 +33,9 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('CreateGameCtrl', function($scope, $location, TestGamesData, ionicTimePicker) {
+.controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, ionicTimePicker ) {
+
+  $scope.athlete = TestProfileData.getAthlete();
 
   var currentDate = new Date();
   console.log((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds());
@@ -44,15 +46,21 @@ angular.module('starter.controllers', [])
     return (hours + 1) * 3600;
   };
 
-  $scope.gameOptions = {
-    date: currentDate,
-    time: roundToNextHour((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds()), // Current time in seconds
-    sport: null,
-    place: null,
-    skillLevel: null,
-    minPlayers: null,
-    maxPlayers: null
+
+  var resetGameOptions = function() {
+    $scope.gameOptions = {
+      date: currentDate,
+      time: roundToNextHour((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds()), // Current time in seconds
+      sport: null,
+      place: null,
+      skillLevel: $scope.athlete.skillLevel,
+      minPlayers: null,
+      maxPlayers: null
+    };
   };
+
+  resetGameOptions();
+
 
   // TODO: Test for bugs
   // https://github.com/rajeshwarpatlolla/ionic-timepicker
@@ -100,17 +108,10 @@ angular.module('starter.controllers', [])
 
     } else {
       $scope.games.push($scope.gameOptions);
-      
+
       // Clear game options so form rests when user returns to this tab
-      $scope.gameOptions = {
-        date: currentDate,
-        time: roundToNextHour((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds()), // Current time in seconds
-        sport: null,
-        place: null,
-        skillLevel: null,
-        minPlayers: null,
-        maxPlayers: null
-      };
+      resetGameOptions();
+
 
       $location.path('tab/find-game');
     }

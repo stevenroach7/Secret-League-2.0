@@ -18,13 +18,18 @@ angular.module('starter.controllers', [])
 
   $scope.athletes = TestProfileData.getAthletes();
 
-  $scope.currentDate = new Date();
+  var dateStringToDate = function(dateString) {
+    /* Takes a String in the format MMDDYYYY and returns a corresponding date object. */
+    var month = dateString.substring(0,2);
+    var day = dateString.substring(2,4);
+    var year = dateString.substring(4,9);
+    var date = new Date(month+"/"+day+"/"+year);
+    return date;
+  };
 
+  $scope.date = dateStringToDate($stateParams.dateString);
 
-  var date = new Date(); // TODO: Replace with function to create date object from url string.
-  // $filter('date')(date, format)
-
-  $scope.games = TestGamesData.getGamesByDate(date);
+  $scope.games = TestGamesData.getGamesByDate($scope.date);
 
 
   $scope.getNextDateString = function() {

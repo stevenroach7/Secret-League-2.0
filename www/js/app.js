@@ -81,24 +81,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
   .state('tab.find-game', {
-      url: '/find-game', // TODO: Add Date string to url
-      views: {
-        'find-game': {
-          templateUrl: 'templates/find-game.html',
-          controller: 'FindGameCtrl'
-        }
+    url: '/find-game/:dateString', // TODO: Add Date string to url
+    views: {
+      'find-game': {
+        templateUrl: 'templates/find-game.html',
+        controller: 'FindGameCtrl'
       }
-    })
-    .state('tab.chat-detail', {
-      url: '/find-game/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
+    }
+  })
 
   .state('tab.create-game', {
     url: '/create-game',

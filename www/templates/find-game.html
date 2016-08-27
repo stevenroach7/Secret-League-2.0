@@ -2,9 +2,9 @@
   <ion-content>
 
     <div class="button-bar">
-      <a ng-href="" class="button button-positive button-block icon ion-android-arrow-back"></a>
+      <a ng-href="#/tab/find-game/{{getLastDateString()}}" nav-transition="none" class="button button-positive button-block icon ion-android-arrow-back"></a>
       <h3 id="date-title">{{date | date:'MMMM dd'}}</h3>
-      <a ng-href="" class="button button-positive button-block icon ion-android-arrow-forward"></a>
+      <a ng-href="#/tab/find-game/{{getNextDateString()}}" nav-transition="none" class="button button-positive button-block icon ion-android-arrow-forward"></a>
     </div>
 
     <h3>Games</h3>

@@ -18,13 +18,12 @@ angular.module('starter.controllers', [])
 
   var dateToDateString = function(date) {
     /* Takes a Date and returns a dateString in the format MMDDYYYY */
-    var dateString = ""; // Initialize dateString as a string.
     var month = String(date.getMonth() + 1); // Month is from 0 - 11 so we add one so it is from 1 - 12
     var day = String(date.getDate());
     var year = String(date.getFullYear());
     month = leftPad(month);
     day = leftPad(day);
-    dateString = month + day + year;
+    var dateString = month + day + year;
     return dateString;
   };
 
@@ -57,15 +56,51 @@ angular.module('starter.controllers', [])
 
   $scope.games = TestGamesData.getGamesByDate($scope.date);
 
+  var leftPad = function(strNum) {
+    /* Takes a string and adds a 0 on the left if the string is one character long. */
+    if (strNum.length == 1) {
+        return ("0"+strNum);
+    }
+    return strNum;
+  };
+
+  var dateToDateString = function(date) {
+    /* Takes a Date and returns a dateString in the format MMDDYYYY */
+    var month = String(date.getMonth() + 1); // Month is from 0 - 11 so we add one so it is from 1 - 12
+    var day = String(date.getDate());
+    var year = String(date.getFullYear());
+    month = leftPad(month);
+    day = leftPad(day);
+    var dateString = month + day + year;
+    return dateString;
+  };
+
+  var getNextDate = function(date) {
+    /* Takes a Date and returns a dateString for the next day in the format MMDDYYYY */
+    var nextDate = new Date();
+    nextDate.setDate(date.getDate() + 1);
+    return nextDate;
+  };
+
+  var getLastDate = function(date) {
+    /* Takes a Date and returns a dateString for the day before in the format MMDDYYYY */
+    var lastDate = new Date();
+    lastDate.setDate(date.getDate() - 1);
+    return lastDate;
+  };
+
   $scope.getNextDateString = function() {
-    /* Uses the stateParams to get the string for the date currently being displayed. Returns the date string for the date of the next day. */
-    // TODO: Write this.
+    /* Returns the date string for the next date. */
+    var nextDate = getNextDate($scope.date);
+    return dateToDateString(nextDate);
   };
 
   $scope.getLastDateString = function() {
-    /* Uses the stateParams to get the string for the date currently being displayed. Returns the date string for the date of the last day. */
-    // TODO: Write this.
+    /* Returns the date string for the previous date. */
+    var lastDate = getLastDate($scope.date);
+    return dateToDateString(lastDate);
   };
+
 
   var getPlayersByID = function(playerIDs) {
     /* Helper function that takes an array of playerIDs and returns a corresponding array of athletes. */

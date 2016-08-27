@@ -14,31 +14,55 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('FindGameCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, $stateParams) {
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.athletes = TestProfileData.getAthletes();
+
+  $scope.currentDate = new Date();
+
+
+  var date = new Date(); // TODO: Replace with function to create date object from url string.
+  // $filter('date')(date, format)
+
+  $scope.games = TestGamesData.getGamesByDate(date);
+
+
+  $scope.getNextDateString = function() {
+    /* Uses the stateParams to get the string for the date currently being displayed. Returns the date string for the date of the next day. */
+    // TODO: Write this.
   };
+
+  $scope.getLastDateString = function() {
+    /* Uses the stateParams to get the string for the date currently being displayed. Returns the date string for the date of the last day. */
+    // TODO: Write this.
+  };
+
+  var getPlayersByID = function(playerIDs) {
+    /* Helper function that takes an array of playerIDs and returns a corresponding array of athletes. */
+    var players = [];
+    for (var i = 0; i < playerIDs.length; i++) {
+      var athlete = TestProfileData.getAthlete(playerIDs[i]);
+      players.push(athlete);
+    }
+    return players;
+  };
+
+  $scope.getPlayersInGame = function(gameID) {
+    /* Takes a gameID and returns the players registered for that game. */
+    var game = TestGamesData.getGame(gameID);
+    var players = getPlayersByID(game.playerIDs);
+    return players;
+  };
+
+
 })
 
-.controller('ChatDetailCtrl', function($scope) {
 
-})
+.controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, ionicTimePicker) {
 
-.controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, ionicTimePicker ) {
-
-  $scope.athlete = TestProfileData.getAthlete();
+  $scope.athlete = TestProfileData.getAthlete(0); // TODO: Change 0 to userID of authenticated user.
 
   var currentDate = new Date();
-  console.log((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds());
 
   var roundToNextHour = function(seconds) {
     /* Helper function that takes a time in seconds and returns the time of the upcoming whole hour in seconds. */
@@ -49,13 +73,15 @@ angular.module('starter.controllers', [])
 
   var resetGameOptions = function() {
     $scope.gameOptions = {
+      id: (currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds(), // TODO: Create Auto Id generator function or do this elsewhere.
       date: currentDate,
       time: roundToNextHour((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds()), // Current time in seconds
       sport: null,
       place: null,
       skillLevel: $scope.athlete.skillLevel,
       minPlayers: null,
-      maxPlayers: null
+      maxPlayers: null,
+      playerIDs: [0]
     };
   };
 
@@ -71,7 +97,6 @@ angular.module('starter.controllers', [])
       } else {
         var selectedTime = new Date(val * 1000);
         $scope.gameOptions.time = selectedTime.getUTCHours() * 3600 + selectedTime.getUTCMinutes() * 60 + selectedTime.getUTCSeconds();
-        console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
       }
     },
     inputTime: $scope.gameOptions.time,   //Optional
@@ -80,10 +105,11 @@ angular.module('starter.controllers', [])
     setLabel: 'Set'    //Optional
   };
 
+
   $scope.chooseTime = function() {
+    ipObj1.inputTime = $scope.gameOptions.time; // Refresh default time on timepicker options object.
     ionicTimePicker.openTimePicker(ipObj1);
   };
-
 
   // https://github.com/angular-slider/angularjs-slider
   $scope.slider = {
@@ -107,65 +133,60 @@ angular.module('starter.controllers', [])
       console.log('invalid input'); // TODO: Create invalid input popup
 
     } else {
-      $scope.games.push($scope.gameOptions);
-
+      $scope.games.push($scope.gameOptions); // add newly created game to games array.
       // Clear game options so form rests when user returns to this tab
       resetGameOptions();
-
-
       $location.path('tab/find-game');
     }
-
-
   };
 })
 
 
-.controller('ProfileCtrl', function($scope, TestProfileData, $ionicPopup) {
+.controller('ProfileCtrl', function($scope, TestProfileData, $ionicPopup, $stateParams) {
 
-  $scope.athlete = TestProfileData.getAthlete();
-
-
-
-    $scope.showProfilePopup = function(athlete) {
-
-      $scope.data = {}; // Temporary variable used to get workoutNotes input data.
-      $scope.data.name = athlete.name;
-      $scope.data.bio = athlete.bio;
-      $scope.data.skillLevel = athlete.skillLevel;
-      $scope.data.favAthlete = athlete.favAthlete;
+  $scope.athlete = TestProfileData.getAthlete($stateParams.userID);
 
 
-      var editProfilePopup = $ionicPopup.show({
-        template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <br /><select ng-model="data.skillLevel"><option>Casual</option><option>Competitive</option><option>Both</option></select> <br />Favorite Athlete: <input type="text" ng-model="data.favAthlete">',
 
-        title: 'Edit Profile',
-        subTitle: '',
-        scope: $scope,
-        buttons: [{
-          text: 'Cancel'
-        }, {
-          text: 'Submit',
-          type: 'button-positive',
-          onTap: function(e) {
-            return $scope.data;
-          }
-        }]
-      });
+  $scope.showProfilePopup = function(athlete) {
 
-      editProfilePopup.then(function(res) {
-        if (res) {
-          //TODO: Check to make user input is valid.
-          athlete.name = res.name;
-          athlete.bio = res.bio;
-          athlete.skillLevel = res.skillLevel;
+    $scope.data = {}; // Temporary variable used to get workoutNotes input data.
+    $scope.data.name = athlete.name;
+    $scope.data.bio = athlete.bio;
+    $scope.data.skillLevel = athlete.skillLevel;
+    $scope.data.favAthlete = athlete.favAthlete;
 
+
+    var editProfilePopup = $ionicPopup.show({
+      template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <br /><select ng-model="data.skillLevel"><option>Casual</option><option>Competitive</option><option>Both</option></select> <br />Favorite Athlete: <input type="text" ng-model="data.favAthlete">',
+
+      title: 'Edit Profile',
+      subTitle: '',
+      scope: $scope,
+      buttons: [{
+        text: 'Cancel'
+      }, {
+        text: 'Submit',
+        type: 'button-positive',
+        onTap: function(e) {
+          return $scope.data;
         }
+      }]
+    });
 
-      });
-    };
+    editProfilePopup.then(function(res) {
+      if (res) {
+        //TODO: Check to make user input is valid.
+        athlete.name = res.name;
+        athlete.bio = res.bio;
+        athlete.skillLevel = res.skillLevel;
 
-  })
+      }
+
+    });
+  };
+
+})
 
   // Angular Filters
   .filter('secondsToTime', function($filter) {

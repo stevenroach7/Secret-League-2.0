@@ -1,11 +1,31 @@
-/* Empty. Add your own CSS if you like */
+/* CSS Stylesheet */
 
 
-
+/* General CSS */
 .item-unselectable.activated { /* The item-unselectable class is for items that are unselectable. */
   background: #fff; /* Set color when selected to be white. It already is white so it ends up having no effect. */
 }
 
+
+
+/* find-game styling */
+#date-title {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.game-display {
+  border: 2px solid #387ef5;
+  margin: 2% 0;
+}
+
+
+
+
+
+
+
+/* create-game styling TODO: Change unique classes to ID's */
 .date-item {
   line-height: 300%;
 }
@@ -26,7 +46,6 @@
   margin-top: 2%;
 }
 
-
 /* Timepicker Styling */
 .heading, .button_set, .button_close {
   background-color: #387ef5 !important;
@@ -46,26 +65,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Profile page specific styling */
+/* profile styling */
 
 .profile-top {
   background: #424242;

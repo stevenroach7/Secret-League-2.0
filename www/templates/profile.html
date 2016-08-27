@@ -26,7 +26,9 @@
   </a>
 
   <!-- <div class="spacer" style="width: 300px; height: 5px;"></div> -->
-  <button class="button button-positive button-block button-clear" ng-click="showProfilePopup(athlete)">Edit Profile</button>
+
+  <!-- TODO: Change ng-show to only show edit profile button if this is the current user's profile rather than having userID === 0.-->
+  <button class="button button-positive button-block button-clear" ng-show="athlete.userID === 0"ng-click="showProfilePopup(athlete)">Edit Profile</button>
 
 
 </ion-view>

@@ -16,8 +16,6 @@ angular.module('starter.controllers', [])
 
 .controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, $stateParams) {
 
-  $scope.athletes = TestProfileData.getAthletes();
-
   var dateStringToDate = function(dateString) {
     /* Takes a String in the format MMDDYYYY and returns a corresponding date object. */
     var month = dateString.substring(0,2);
@@ -31,10 +29,9 @@ angular.module('starter.controllers', [])
 
   $scope.games = TestGamesData.getGamesByDate($scope.date);
 
-
   $scope.getNextDateString = function() {
     /* Uses the stateParams to get the string for the date currently being displayed. Returns the date string for the date of the next day. */
-    // TODO: Write this.
+    // TODO: Write this. 
   };
 
   $scope.getLastDateString = function() {
@@ -59,7 +56,6 @@ angular.module('starter.controllers', [])
     return players;
   };
 
-
 })
 
 
@@ -74,7 +70,6 @@ angular.module('starter.controllers', [])
     var hours = Math.floor(seconds / 3600);
     return (hours + 1) * 3600;
   };
-
 
   var resetGameOptions = function() {
     $scope.gameOptions = {

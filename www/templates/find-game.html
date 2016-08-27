@@ -7,43 +7,20 @@
       <a ng-href="" class="button button-positive button-block icon ion-android-arrow-forward"></a>
     </div>
 
-
-    <h4>Games</h4>
-
+    <h3>Games</h3>
     <div class="game-display" ng-repeat="game in games"> <!-- TODO: Style this -->
       {{game.sport}} <br />
       {{game.time | secondsToTime}} <br />
       {{game.place}} <br />
       {{game.skillLevel}} <br />
       <!-- TODO: Dislay joined players / max players -->
+      <h4>Roster</h4>
       <ion-list>
         <ion-item ng-repeat="player in getPlayersInGame(game.id)" ng-href="#/tab/profile/{{player.userID}}">
           {{player.name}}
         </ion-item>
       </ion-list>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h3>Athletes</h3>
-    <ion-list>
-
-      <ion-item ng-repeat="athlete in athletes" ng-href="#/tab/profile/{{athlete.userID}}">
-        {{athlete.name}}
-      </ion-item>
-    </ion-list>
-
-
 
   </ion-content>
 </ion-view>

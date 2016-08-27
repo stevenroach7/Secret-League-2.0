@@ -96,14 +96,17 @@
         return games;
       },
       getGamesByDate: function(date) {
-        var currentGames = [];
-        for (var game in games) {
-          if (game.date) { // TODO: If game.date has same month, day and year as input date
-            currentGames.push(game);
+        var gamesByDate = [];
+        var isDateEqual = function(date1, date2) { // TODO: Test this.
+          /* Returns boolean for if the two dates have the same day, month, and year. */
+          return (date1.getDate() == date2.getDate() && date1.getMonth() == date1.getMonth() && date1.getFullYear() == date1.getFullYear());
+        };
+        for (var i = 0; i < games.length; i++) {
+          if (isDateEqual(games[i].date, date)) { // If game.date has same month, day and year as input date
+            gamesByDate.push(games[i]);
           }
         }
-        //return currentGames;
-        return games;
+        return gamesByDate;
       },
       getGame: function(gameID) {// TODO: Rewrite to be more efficient.
         for (var i = 0; i < games.length; i++) {

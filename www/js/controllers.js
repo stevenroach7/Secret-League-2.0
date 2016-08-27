@@ -5,6 +5,34 @@
 
 angular.module('starter.controllers', [])
 
+.controller('TabsCtrl', function($scope) {
+
+
+  var leftPad = function(strNum) {
+    /* Takes a string and adds a 0 on the left if the string is one character long. */
+    if (strNum.length == 1) {
+        return ("0"+strNum);
+    }
+    return strNum;
+  };
+
+  var dateToDateString = function(date) {
+    /* Takes a Date and returns a dateString in the format MMDDYYYY */
+    var dateString = ""; // Initialize dateString as a string.
+    var month = String(date.getMonth() + 1); // Month is from 0 - 11 so we add one so it is from 1 - 12
+    var day = String(date.getDate());
+    var year = String(date.getFullYear());
+    month = leftPad(month);
+    day = leftPad(day);
+    dateString = month + day + year;
+    return dateString;
+  };
+
+  var currentDate = new Date();
+  $scope.currentDateString = dateToDateString(currentDate);
+
+
+})
 
 
 .controller('LoginCtrl', function($scope) {})
@@ -31,7 +59,7 @@ angular.module('starter.controllers', [])
 
   $scope.getNextDateString = function() {
     /* Uses the stateParams to get the string for the date currently being displayed. Returns the date string for the date of the next day. */
-    // TODO: Write this. 
+    // TODO: Write this.
   };
 
   $scope.getLastDateString = function() {

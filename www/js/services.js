@@ -108,7 +108,7 @@
         }
         return gamesByDate;
       },
-      getGame: function(gameID) {// TODO: Rewrite to be more efficient.
+      getGame: function(gameID) { // TODO: Rewrite to be more efficient.
         for (var i = 0; i < games.length; i++) {
           if (games[i].id === gameID) {
             return games[i];

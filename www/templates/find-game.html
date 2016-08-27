@@ -3,11 +3,11 @@
 
     <div class="button-bar">
       <a ng-href="#/tab/find-game/{{getLastDateString()}}" nav-transition="none" class="button button-positive button-block icon ion-android-arrow-back"></a>
-      <h3 id="date-title">{{date | date:'MMMM dd'}}</h3>
+      <h3 class="date-title title-shadow">{{date | date:'MMMM dd'}}</h3>
       <a ng-href="#/tab/find-game/{{getNextDateString()}}" nav-transition="none" class="button button-positive button-block icon ion-android-arrow-forward"></a>
     </div>
 
-    <h3>Games</h3>
+    <h3 class="games-title title-shadow">Games</h3>
     <div class="game-display" ng-repeat="game in games"> <!-- TODO: Style this -->
       {{game.sport}} <br />
       {{game.time | secondsToTime}} <br />

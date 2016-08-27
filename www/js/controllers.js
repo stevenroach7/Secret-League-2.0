@@ -199,7 +199,7 @@ angular.module('starter.controllers', [])
       $scope.games.push($scope.gameOptions); // add newly created game to games array.
       // Clear game options so form rests when user returns to this tab
       resetGameOptions();
-      $location.path('tab/find-game');
+      $location.path('tab/find-game'); // TODO: Direct to date of recently created game
     }
   };
 })
@@ -221,8 +221,7 @@ angular.module('starter.controllers', [])
 
 
     var editProfilePopup = $ionicPopup.show({
-      template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <br /><select ng-model="data.skillLevel"><option>Casual</option><option>Competitive</option><option>Both</option></select> <br />Favorite Athlete: <input type="text" ng-model="data.favAthlete">',
-
+      template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <br /><ion-item class="item item-select"><select ng-model="data.skillLevel"><option>Casual</option><option>Competitive</option><option>Both</option></select></ion-item> <br />Favorite Athlete: <input type="text" ng-model="data.favAthlete">',
       title: 'Edit Profile',
       subTitle: '',
       scope: $scope,

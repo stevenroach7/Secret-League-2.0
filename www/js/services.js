@@ -92,8 +92,7 @@
       getNextDate: function(date) {
         /* Takes a Date and returns a dateString for the next day in the format MMDDYYYY */
         var nextDate = new Date(date);
-        nextDate.setDate(nextDate.getDate() + 1); // TODO: Fix this line.
-        console.log(nextDate);
+        nextDate.setDate(nextDate.getDate() + 1);
         return nextDate;
       },
       getLastDate: function(date) {

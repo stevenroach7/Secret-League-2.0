@@ -82,7 +82,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
   .state('tab.find-game', {
-    url: '/find-game/:dateString', // TODO: Add Date string to url
+    url: '/find-game/:dateString',
     views: {
       'find-game': {
         templateUrl: 'templates/find-game.html',

@@ -61,6 +61,49 @@
 
   });
 
+  servMod.factory('DateService', function() {
+
+    return {
+      dateStringToDate: function(dateString) {
+        /* Takes a String in the format MMDDYYYY and returns a corresponding date object. */
+        var month = dateString.substring(0,2);
+        var day = dateString.substring(2,4);
+        var year = dateString.substring(4,9);
+        var date = new Date(month+"/"+day+"/"+year);
+        return date;
+      },
+      dateToDateString: function(date) {
+        /* Takes a Date and returns a dateString in the format MMDDYYYY */
+        var month = String(date.getMonth() + 1); // Month is from 0 - 11 so we add one so it is from 1 - 12
+        var day = String(date.getDate());
+        var year = String(date.getFullYear());
+        var leftPad = function(strNum) {
+          /* Takes a string and adds a 0 on the left if the string is one character long. */
+          if (strNum.length == 1) {
+              return ("0"+strNum);
+          }
+          return strNum;
+        };
+        month = leftPad(month);
+        day = leftPad(day);
+        var dateString = month + day + year;
+        return dateString;
+      },
+      getNextDate: function(date) {
+        /* Takes a Date and returns a dateString for the next day in the format MMDDYYYY */
+        var nextDate = new Date();
+        nextDate.setDate(date.getDate() + 1);
+        return nextDate;
+      },
+      getLastDate: function(date) {
+        /* Takes a Date and returns a dateString for the day before in the format MMDDYYYY */
+        var lastDate = new Date();
+        lastDate.setDate(date.getDate() - 1);
+        return lastDate;
+      }
+    };
+  });
+
   servMod.factory('TestGamesData', function() {
 
     var games =

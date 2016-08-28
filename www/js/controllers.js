@@ -43,7 +43,7 @@ angular.module('starter.controllers', [])
 
 .controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, DateService, $stateParams) {
 
-  // TODO: Fix Date Navigation bugs. 
+  // TODO: Fix games randomly appearing bug. 
 
   $scope.date = DateService.dateStringToDate($stateParams.dateString);
 

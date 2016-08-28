@@ -91,14 +91,15 @@
       },
       getNextDate: function(date) {
         /* Takes a Date and returns a dateString for the next day in the format MMDDYYYY */
-        var nextDate = new Date();
-        nextDate.setDate(date.getDate() + 1);
+        var nextDate = new Date(date);
+        nextDate.setDate(nextDate.getDate() + 1); // TODO: Fix this line.
+        console.log(nextDate);
         return nextDate;
       },
       getLastDate: function(date) {
         /* Takes a Date and returns a dateString for the day before in the format MMDDYYYY */
-        var lastDate = new Date();
-        lastDate.setDate(date.getDate() - 1);
+        var lastDate = new Date(date);
+        lastDate.setDate(lastDate.getDate() - 1);
         return lastDate;
       }
     };

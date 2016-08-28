@@ -142,7 +142,7 @@
         var gamesByDate = [];
         var isDateEqual = function(date1, date2) { // TODO: Test this.
           /* Returns boolean for if the two dates have the same day, month, and year. */
-          return (date1.getDate() == date2.getDate() && date1.getMonth() == date1.getMonth() && date1.getFullYear() == date1.getFullYear());
+          return (date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getFullYear() == date2.getFullYear());
         };
         for (var i = 0; i < games.length; i++) {
           if (isDateEqual(games[i].date, date)) { // If game.date has same month, day and year as input date

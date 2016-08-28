@@ -43,8 +43,6 @@ angular.module('starter.controllers', [])
 
 .controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, DateService, $stateParams) {
 
-  // TODO: Fix games randomly appearing bug. 
-
   $scope.date = DateService.dateStringToDate($stateParams.dateString);
 
   $scope.games = TestGamesData.getGamesByDate($scope.date);

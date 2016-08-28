@@ -43,6 +43,8 @@ angular.module('starter.controllers', [])
 
 .controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, DateService, $stateParams) {
 
+  // TODO: Fix Date Navigation bugs. 
+
   $scope.date = DateService.dateStringToDate($stateParams.dateString);
 
   $scope.games = TestGamesData.getGamesByDate($scope.date);
@@ -79,7 +81,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, ionicTimePicker) {
+.controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, DateService, ionicTimePicker) {
 
   $scope.athlete = TestProfileData.getAthlete(0); // TODO: Change 0 to userID of authenticated user.
 
@@ -154,9 +156,14 @@ angular.module('starter.controllers', [])
 
     } else {
       $scope.games.push($scope.gameOptions); // add newly created game to games array.
-      // Clear game options so form rests when user returns to this tab
+
+      // Get date String that of newly created game so we can redirect to that date
+      var date = $scope.gameOptions.date;
+      var dateString = DateService.dateToDateString(date);
+
+      // Clear game options so form resets when user returns to this tab
       resetGameOptions();
-      $location.path('tab/find-game'); // TODO: Direct to date of recently created game
+      $location.path('tab/find-game/' + dateString); // Direct to date of recently created game
     }
   };
 })
@@ -165,8 +172,6 @@ angular.module('starter.controllers', [])
 .controller('ProfileCtrl', function($scope, TestProfileData, $ionicPopup, $stateParams) {
 
   $scope.athlete = TestProfileData.getAthlete($stateParams.userID);
-
-
 
   $scope.showProfilePopup = function(athlete) {
 

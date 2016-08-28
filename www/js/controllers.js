@@ -44,7 +44,7 @@ angular.module('starter.controllers', [])
 .controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, DateService, $stateParams) {
 
   $scope.date = DateService.dateStringToDate($stateParams.dateString);
-
+  
   $scope.games = TestGamesData.getGamesByDate($scope.date);
 
   $scope.getNextDateString = function() {

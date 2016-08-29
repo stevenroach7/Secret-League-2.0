@@ -59,6 +59,12 @@ angular.module('starter.controllers', [])
     return DateService.dateToDateString(lastDate);
   };
 
+  $scope.getCurrentDateString = function() {
+    /* Returns the date string for the current date. */
+    var currentDate = new Date();
+    return DateService.dateToDateString(currentDate);
+  };
+
   var getPlayersByID = function(playerIDs) {
     /* Helper function that takes an array of playerIDs and returns a corresponding array of athletes. */
     var players = [];
@@ -75,6 +81,8 @@ angular.module('starter.controllers', [])
     var players = getPlayersByID(game.playerIDs);
     return players;
   };
+
+
 
 })
 
@@ -172,7 +180,7 @@ angular.module('starter.controllers', [])
     // Check gameOptions for valid input.
     if (!$scope.gameOptions.date || !$scope.gameOptions.time || !$scope.gameOptions.sport || !$scope.gameOptions.place || !$scope.gameOptions.skillLevel) {
       showAlert("Please fill out all fields.");
-    } else if (!isDateValid($scope.gameOptions.date)) { // Check to make sure date entered is valid. 
+    } else if (!isDateValid($scope.gameOptions.date)) { // Check to make sure date entered is valid.
       showAlert("Please choose a valid date.");
     } else { // Input is valid.
       $scope.games.push($scope.gameOptions); // add newly created game to games array.

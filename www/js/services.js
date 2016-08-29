@@ -117,6 +117,7 @@
         skillLevel: "Casual/Competitive",
         minPlayers: 5,
         maxPlayers: 15,
+        gameCreatorID: 0,
         playerIDs: [0,1,2]
       },
       {
@@ -128,6 +129,7 @@
         skillLevel: "Casual",
         minPlayers: 5,
         maxPlayers: 15,
+        gameCreatorID: 1,
         playerIDs: [1,3]
       }
 

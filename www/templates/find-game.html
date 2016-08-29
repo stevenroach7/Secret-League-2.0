@@ -15,12 +15,20 @@
       {{game.time | secondsToTime}} <br />
       {{game.place}} <br />
       {{game.skillLevel}} <br />
+      Created by: {{getAthlete(game.gameCreatorID).name}} <br />
+      <!-- <img src="{{getAthlete(game.gameCreatorID).pic}}" alt="{{getAthlete(game.gameCreatorID).name}}"> -->
+
 
       <h4>Roster</h4>
       <h5>{{getNumPlayersInGame(game)}}/{{game.maxPlayers}}</h5>
       <ion-list>
         <ion-item ng-repeat="player in getPlayersInGame(game.id)" ng-click="viewProfile(player)">
           {{player.name}}
+        </ion-item>
+
+        <ion-item ng-switch="isAthleteInGame(game, athlete)">
+          <button ng-switch-when=false class="button button-positive button-block" ng-click="joinGame(game)">Join Game</button>
+          <button ng-switch-when=true class="button button-positive button-block" ng-click="leaveGame(game)">Leave Game</button>
         </ion-item>
       </ion-list>
     </div>

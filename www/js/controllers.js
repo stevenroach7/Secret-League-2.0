@@ -44,7 +44,7 @@ angular.module('starter.controllers', [])
 .controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, DateService, $stateParams) {
 
   $scope.date = DateService.dateStringToDate($stateParams.dateString);
-  
+
   $scope.games = TestGamesData.getGamesByDate($scope.date);
 
   $scope.getNextDateString = function() {
@@ -198,11 +198,13 @@ angular.module('starter.controllers', [])
 
     editProfilePopup.then(function(res) {
       if (res) {
-        //TODO: Check to make user input is valid.
-        athlete.name = res.name;
-        athlete.bio = res.bio;
-        athlete.skillLevel = res.skillLevel;
-
+        // Check to make user name is not blank
+        if (res.name) {
+          athlete.name = res.name;
+          athlete.bio = res.bio;
+          athlete.skillLevel = res.skillLevel;
+          athlete.favAthlete = res.favAthlete;
+        }
       }
 
     });

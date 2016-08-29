@@ -79,6 +79,15 @@ angular.module('starter.controllers', [])
     return players;
   };
 
+  $scope.getNumPlayersInGame = function(game) {
+    /* Takes a game and returns the number of players currently registered */
+    return game.playerIDs.length;
+  };
+
+
+
+
+
 
 
 })

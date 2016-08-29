@@ -194,9 +194,9 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('ProfileCtrl', function($scope, TestProfileData, $ionicPopup, $stateParams) {
+.controller('ProfileCtrl', function($scope, TestProfileData, $ionicPopup) {
 
-  $scope.athlete = TestProfileData.getAthlete($stateParams.userID);
+  $scope.athlete = TestProfileData.getAthlete(0); // TODO: Replace with ID of authenticated user.
 
   $scope.showProfilePopup = function(athlete) {
 

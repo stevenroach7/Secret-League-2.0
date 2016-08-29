@@ -79,7 +79,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, DateService, ionicTimePicker) {
+.controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, DateService, ionicTimePicker, $ionicPopup) {
 
   $scope.athlete = TestProfileData.getAthlete(0); // TODO: Change 0 to userID of authenticated user.
 
@@ -143,6 +143,27 @@ angular.module('starter.controllers', [])
 
   $scope.games = TestGamesData.getGames();
 
+  var showAlert = function(message) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Invalid Input',
+      template: message
+    });
+  };
+
+  var isDateValid = function(date) {
+    /* Takes a date and returns a boolean for if the date is valid. A date is valid if is it on or after the current date (Does not use time to compare) but not more than a year after. */
+    var currentDate = new Date();
+    var currentDateNoTimeUTC = Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+    var dateNoTimeUTC = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+    if (dateNoTimeUTC < currentDateNoTimeUTC) { // Check date isn't before current date.
+      return false;
+    }
+    var MS_PER_DAY = 1000 * 60 * 60 * 24;
+    var DAYS_IN_YEAR = 365;
+    var daysDifference = Math.floor((dateNoTimeUTC - currentDateNoTimeUTC) / MS_PER_DAY);
+    return (daysDifference < 365);
+  };
+
   $scope.createGame = function() {
 
     $scope.gameOptions.minPlayers = $scope.slider.min;
@@ -150,12 +171,13 @@ angular.module('starter.controllers', [])
 
     // Check gameOptions for valid input.
     if (!$scope.gameOptions.date || !$scope.gameOptions.time || !$scope.gameOptions.sport || !$scope.gameOptions.place || !$scope.gameOptions.skillLevel) {
-      console.log('invalid input'); // TODO: Create invalid input popup
-
-    } else {
+      showAlert("Please fill out all fields.");
+    } else if (!isDateValid($scope.gameOptions.date)) { // Check to make sure date entered is valid. 
+      showAlert("Please choose a valid date.");
+    } else { // Input is valid.
       $scope.games.push($scope.gameOptions); // add newly created game to games array.
 
-      // Get date String that of newly created game so we can redirect to that date
+      // Get date String of newly created game so we can redirect to that date
       var date = $scope.gameOptions.date;
       var dateString = DateService.dateToDateString(date);
 

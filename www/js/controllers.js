@@ -181,7 +181,7 @@ angular.module('starter.controllers', [])
 
 
     var editProfilePopup = $ionicPopup.show({
-      template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <br /><ion-item class="item item-select"><select ng-model="data.skillLevel"><option>Casual</option><option>Competitive</option><option>Both</option></select></ion-item> <br />Favorite Athlete: <input type="text" ng-model="data.favAthlete">',
+      template: 'Name: <input type="text" ng-model="data.name"> Bio: <input type="text" ng-model="data.bio"> Skill Level: <br /><ion-item class="item item-select"><select ng-model="data.skillLevel"><option>Casual</option><option>Competitive</option><option>Casual/Competitive</option></select></ion-item> <br />Favorite Athlete: <input type="text" ng-model="data.favAthlete">',
       title: 'Edit Profile',
       subTitle: '',
       scope: $scope,

@@ -20,7 +20,7 @@
       name: "Vivi Gregorich",
       gradYear: "2018",
       pic: "img/Trier_Joe.png",
-      skillLevel: "Both",
+      skillLevel: "Casual/Competitive",
       favAthlete: "David Garrard",
       bio: "Ball is life."
     },
@@ -29,7 +29,7 @@
       name: "Ben Sydel",
       gradYear: "2018",
       pic: "img/Trier_Joe.png",
-      skillLevel: "Both",
+      skillLevel: "Casual/Competitive",
       favAthlete: "Chad Henne",
       bio: "Tired of losing."
     },
@@ -38,7 +38,7 @@
       name: "Steven Roach",
       gradYear: "2018",
       pic: "img/Steven.png",
-      skillLevel: "Both",
+      skillLevel: "Casual/Competitive",
       favAthlete: "Rafael Nadal",
       bio: "Game, Set, Match."
     }
@@ -114,7 +114,7 @@
         time: 7000, // Current time in seconds
         sport: "Basketball",
         place: "Leonard Center Field House",
-        skillLevel: "Both",
+        skillLevel: "Casual/Competitive",
         minPlayers: 5,
         maxPlayers: 15,
         playerIDs: [0,1,2]

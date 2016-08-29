@@ -18,7 +18,8 @@
       <!-- TODO: Dislay joined players / max players -->
       <h4>Roster</h4>
       <ion-list>
-        <ion-item ng-repeat="player in getPlayersInGame(game.id)" ng-href="#/tab/profile/{{player.userID}}">
+        <!-- <ion-item ng-repeat="player in getPlayersInGame(game.id)" ng-href="#/tab/profile/{{player.userID}}"> -->
+        <ion-item ng-repeat="player in getPlayersInGame(game.id)" ng-click="viewProfile(player)">
           {{player.name}}
         </ion-item>
       </ion-list>

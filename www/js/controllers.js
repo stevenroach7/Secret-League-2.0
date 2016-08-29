@@ -5,31 +5,28 @@
 
 angular.module('starter.controllers', [])
 
-.controller('TabsCtrl', function($scope) {
-
-
-  var leftPad = function(strNum) {
-    /* Takes a string and adds a 0 on the left if the string is one character long. */
-    if (strNum.length == 1) {
-        return ("0"+strNum);
-    }
-    return strNum;
-  };
-
-  var dateToDateString = function(date) {
-    /* Takes a Date and returns a dateString in the format MMDDYYYY */
-    var month = String(date.getMonth() + 1); // Month is from 0 - 11 so we add one so it is from 1 - 12
-    var day = String(date.getDate());
-    var year = String(date.getFullYear());
-    month = leftPad(month);
-    day = leftPad(day);
-    var dateString = month + day + year;
-    return dateString;
-  };
+.controller('TabsCtrl', function($scope, DateService, $ionicModal) {
 
   var currentDate = new Date();
-  $scope.currentDateString = dateToDateString(currentDate);
+  $scope.currentDateString = DateService.dateToDateString(currentDate);
+  $scope.athlete = null; // initialize athlete variable that will be used to display data in modal.
 
+  // Create the viewProfile modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/profile-modal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+
+  $scope.viewProfile = function(athlete) {
+    $scope.athlete = athlete; // Set $scope.athlete (in parent scope)
+    $scope.modal.show(); // Open modal
+  };
+
+  $scope.closeProfile = function() {
+    $scope.modal.hide(); // Close modal
+  };
 
 })
 

@@ -1,5 +1,14 @@
-<ion-view view-title="Profile">
+<ion-modal-view>
+
+  <ion-header-bar class="bar-stable">
+    <h1 class="title">View Profile</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeProfile()">Close</button>
+    </div>
+  </ion-header-bar>
+
   <ion-content>
+
     <div class="profile-top"> <!-- Top half of page -->
       <div class="profile-pic"> <img src="{{athlete.pic}}" alt="{{athlete.name}}"></div>
       <h4 class="profile-name">{{athlete.name}}</h4>
@@ -7,8 +16,6 @@
 
 
     <!-- Bottom half of page -->
-
-
     <div class="item item-divider profile-divider">
     Info
     </div>
@@ -25,9 +32,6 @@
       <h2><b>Favorite Athlete:</b> {{athlete.favAthlete}}</h2>
     </a>
 
-    <!-- <div class="spacer" style="width: 300px; height: 5px;"></div> -->
-
-    <!-- TODO: Change ng-show to only show edit profile button if this is the current user's profile rather than having userID === 0.-->
-    <button class="button button-positive button-block button-clear" ng-show="athlete.userID === 0" ng-click="showProfilePopup(athlete)">Edit Profile</button>
   </ion-content>
-</ion-view>
+
+</ion-modal-view>

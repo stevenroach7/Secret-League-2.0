@@ -4,7 +4,7 @@
 
   servMod.factory('TestProfileData', function() {
 
-    var athletes = // TODO: Refactor how athletes are stored. Put an object, userID is key. 
+    var athletes = // TODO: Refactor how athletes are stored. Put an object, userID is key.
     [
       {
       userID: 0,
@@ -128,7 +128,7 @@
         place: "Leonard Center Alumni Gym",
         skillLevel: "Casual",
         minPlayers: 2,
-        maxPlayers: 2,
+        maxPlayers: 3,
         gameCreatorID: 1,
         playerIDs: [1,3]
       }
@@ -161,7 +161,7 @@
         }
         return null;
       }
-      // TODO: Add sort games by date
+      // TODO: Add function to create sorted games array
     };
 
 

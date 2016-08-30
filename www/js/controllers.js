@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, DateService, $stateParams) {
+.controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, DateService, $stateParams, $ionicPopup) {
 
   $scope.date = DateService.dateStringToDate($stateParams.dateString);
 
@@ -141,6 +141,27 @@ angular.module('starter.controllers', [])
     }
   };
 
+  var isGameCreator = function(game, athlete) {
+    /* Takes a game and an athlete and returns a boolean for if the game was created by that athlete. */
+    return game.gameCreatorID === athlete.userID;
+  };
+
+
+  // A confirm dialog
+  var showConfirm = function(game) {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Leaving Your Own Game?',
+      template: 'Are you sure you want to leave a game you created?',
+      okText: 'Yes'
+    });
+
+    confirmPopup.then(function(res) {
+      if(res) { // User confirms choice.
+        removeElemFromArray(game.playerIDs, $scope.athlete.userID);
+      }
+    });
+  };
+
 
   $scope.joinGame = function(game) {
     /* Adds authenticated user to playerIDs array in game. */
@@ -151,8 +172,12 @@ angular.module('starter.controllers', [])
 
   $scope.leaveGame = function(game) {
     /* Removes authenticated user from playerIDs array in game. */
-    if (isAthleteInGame(game, $scope.athlete)) {
-      removeElemFromArray(game.playerIDs, $scope.athlete.userID);
+    if (isAthleteInGame(game, $scope.athlete)) { // Make sure athlete is in game alerady
+      if (isGameCreator(game, $scope.athlete)) { // Check to see if athlete created game so we can show an alert if so.
+        showConfirm(game); // Show confirm popup
+      } else {
+        removeElemFromArray(game.playerIDs, $scope.athlete.userID);
+      }
     }
   };
 

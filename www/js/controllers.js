@@ -261,6 +261,11 @@ angular.module('starter.controllers', [])
 
   $scope.games = TestGamesData.getGames();
 
+
+
+  // TODO: Create function to open invite players modal.
+
+
   var showAlert = function(message) {
     var alertPopup = $ionicPopup.alert({
       title: 'Invalid Input',

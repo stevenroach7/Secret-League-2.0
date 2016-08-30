@@ -4,7 +4,7 @@
 
   servMod.factory('TestProfileData', function() {
 
-    var athletes = // TODO: Refactor how athletes are stored. Put an object, userID is key.
+    var athletes = // TODO: Refactor how athletes are stored. Put in object, userID is key.
     [
       {
       userID: 0,

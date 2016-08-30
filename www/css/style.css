@@ -25,11 +25,13 @@
   margin: 2% 0;
 }
 
-
-
 /* create-game styling */
 .date-item {
-  line-height: 300%;
+  line-height: 200%;
+}
+
+.time-item, .sport-item, .place-item, .skill-item, .invite-item {
+  line-height: 80%;
 }
 
 .date-input {

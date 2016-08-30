@@ -26,9 +26,10 @@
           {{player.name}}
         </ion-item>
 
-        <ion-item ng-switch="isAthleteInGame(game, athlete)">
-          <button ng-switch-when=false class="button button-positive button-block" ng-click="joinGame(game)">Join Game</button>
-          <button ng-switch-when=true class="button button-positive button-block" ng-click="leaveGame(game)">Leave Game</button>
+        <ion-item ng-switch="gameDisplayOptions(game)">
+          <button ng-switch-when=0 class="button button-positive button-block" ng-click="leaveGame(game)">Leave Game</button>
+          <p ng-switch-when=1>Game is full</p>
+          <button ng-switch-default class="button button-positive button-block" ng-click="joinGame(game)">Join Game</button>
         </ion-item>
       </ion-list>
     </div>

@@ -107,36 +107,51 @@ angular.module('starter.controllers', [])
     }
   };
 
-  $scope.isAthleteInGame = function(game, athlete) {
+
+  var isAthleteInGame = function(game, athlete) {
     /* Takes a game and an athlete and returns a boolean for if the athlete is in the playerIDs array of the game. */
     return arrayIncludes(game.playerIDs, athlete.userID);
   };
 
+  // TODO: Test these.
+  var isGameFull = function(game) {
+    /* Takes a game and returns a boolean for if the game has the maxiumum amount of players. */
+    return ($scope.getNumPlayersInGame(game) >= game.maxPlayers);
+  };
+
+  // Check if game is at or above minimum players
+  var isGameOverMin = function(game) {
+    /* Takes a game and returns a boolean for if the game has the minimum amount of players or higher. */
+    return ($scope.getNumPlayersInGame(game) >= game.minPlayers);
+  };
+
+
+  $scope.gameDisplayOptions = function(game) {
+    /* Takes a game and returns an integer corresponding to what should be displayed below the game. */
+    if (isAthleteInGame(game, $scope.athlete)) { // Show Leave Game button
+      return 0;
+    } else if (isGameFull(game)) { // Show game is full message
+      return 1;
+    } else if (isGameOverMin(game)) { // Change display to reflect this and show Join Game button
+      return 2;
+    } else {
+      return 3; // Show Join Game button
+    }
+  };
+
+
   $scope.joinGame = function(game) {
     /* Adds authenticated user to playerIDs array in game. */
-    if (!$scope.isAthleteInGame(game, $scope.athlete)) {
+    if (!isAthleteInGame(game, $scope.athlete)) {
       game.playerIDs.push($scope.athlete.userID);
     }
   };
 
   $scope.leaveGame = function(game) {
     /* Removes authenticated user from playerIDs array in game. */
-    if ($scope.isAthleteInGame(game, $scope.athlete)) {
+    if (isAthleteInGame(game, $scope.athlete)) {
       removeElemFromArray(game.playerIDs, $scope.athlete.userID);
     }
-  };
-
-  // Check if game is full
-
-  // TODO: Test these. 
-  $scope.isGameFull = function(game) {
-    /* Takes a game and returns a boolean for if the game has the maxiumum amount of players. */
-    return (getNumPlayersInGame(game) >= game.maxPlayers);
-  };
-
-  // Check if game is at or above minimum players
-  $scope.isGameOverMin = function(game) {
-    return (getNumPlayersInGame(game) >= game.minPlayers);
   };
 
 

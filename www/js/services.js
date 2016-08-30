@@ -115,7 +115,7 @@
         sport: "Basketball",
         place: "Leonard Center Field House",
         skillLevel: "Casual/Competitive",
-        minPlayers: 5,
+        minPlayers: 2,
         maxPlayers: 15,
         gameCreatorID: 0,
         playerIDs: [0,1,2]
@@ -127,8 +127,8 @@
         sport: "Basketball",
         place: "Leonard Center Alumni Gym",
         skillLevel: "Casual",
-        minPlayers: 5,
-        maxPlayers: 15,
+        minPlayers: 2,
+        maxPlayers: 2,
         gameCreatorID: 1,
         playerIDs: [1,3]
       }

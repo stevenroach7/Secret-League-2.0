@@ -1,0 +1,26 @@
+<ion-modal-view>
+
+  <ion-header-bar class="bar-stable">
+    <h1 class="title">Invite Players</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closePlayers()">Close</button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content on-swipe-down="closePlayers()">
+
+
+
+    <ion-list>
+      <ion-checkbox ng-repeat="player in players" ng-model="player.invited">
+        {{player.name}}
+      </ion-checkbox>
+      <label class="item">
+        <button class="button button-positive button-block" ng-click="inviteSelectedPlayers();">Invite</button>
+      </label>
+    </ion-list>
+
+
+  </ion-content>
+
+</ion-modal-view>

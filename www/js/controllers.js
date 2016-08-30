@@ -5,7 +5,10 @@
 
 angular.module('starter.controllers', [])
 
-.controller('TabsCtrl', function($scope, DateService, $ionicModal) {
+.controller('TabsCtrl', function($scope, DateService, TestProfileData, $ionicModal) {
+
+
+  // Modals
 
   var currentDate = new Date();
   $scope.currentDateString = DateService.dateToDateString(currentDate);
@@ -14,19 +17,57 @@ angular.module('starter.controllers', [])
   // Create the viewProfile modal that we will use later
   $ionicModal.fromTemplateUrl('templates/profile-modal.html', {
     scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
+  }).then(function(profileModal) {
+    $scope.profileModal = profileModal;
   });
 
 
   $scope.viewProfile = function(athlete) {
     $scope.athlete = athlete; // Set $scope.athlete (in parent scope)
-    $scope.modal.show(); // Open modal
+    $scope.profileModal.show(); // Open modal
   };
 
   $scope.closeProfile = function() {
-    $scope.modal.hide(); // Close modal
+    $scope.profileModal.hide(); // Close modal
   };
+
+
+  $scope.players = null; // TODO: Change this potentially.
+
+  // Create the viewPlayers modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/players-modal.html', {
+    scope: $scope
+  }).then(function(playersModal) {
+    $scope.playersModal = playersModal;
+  });
+
+
+  $scope.viewPlayers = function(athlete) {
+    var athletes = TestProfileData.getAthletes();
+    $scope.players = [];
+
+    for (var i = 0; i < athletes.length; i++) {
+      var player = {
+        userID: athletes[i].userID,
+        name: athletes[i].name,
+        invited: false
+      };
+      $scope.players.push(player);
+    }
+    $scope.playersModal.show(); // Open modal
+  };
+
+  $scope.closePlayers = function() {
+    $scope.playersModal.hide(); // Close modal
+  };
+
+  // TODO: Finish this.
+  $scope.inviteSelectedPlayers = function() {
+    /* Invites the players selected and closes the window. */
+    console.log($scope.players);
+    $scope.closePlayers();
+  };
+
 
 })
 

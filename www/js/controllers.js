@@ -192,8 +192,6 @@ angular.module('starter.controllers', [])
 
   $scope.athlete = TestProfileData.getAthlete(0); // TODO: Change 0 to userID of authenticated user.
 
-  var currentDate = new Date();
-
   var roundToNextHour = function(seconds) {
     /* Helper function that takes a time in seconds and returns the time of the upcoming whole hour in seconds. */
     var hours = Math.floor(seconds / 3600);
@@ -201,6 +199,7 @@ angular.module('starter.controllers', [])
   };
 
   var resetGameOptions = function() {
+    var currentDate = new Date();
     $scope.gameOptions = {
       id: (currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds(), // TODO: Create Auto Id generator function or do this elsewhere.
       date: currentDate,
@@ -283,10 +282,24 @@ angular.module('starter.controllers', [])
     return (daysDifference < 365);
   };
 
+  var setTimeOfDateFromSeconds = function(date, seconds) {
+    /* Takes a date object and a time in seconds and sets the hours, minutes and seconds of the date object according to the time. */
+    var hoursDate = seconds / (60 * 60);
+    var secondsLeftover = seconds % (60 * 60);
+    var minutesDate = secondsLeftover / 60;
+    var secondsDate = secondsLeftover % 60;
+    date.setHours(hoursDate);
+    date.setMinutes(minutesDate);
+    date.setSeconds(secondsDate);
+  };
+
+
   $scope.createGame = function() {
 
     $scope.gameOptions.minPlayers = $scope.slider.min;
     $scope.gameOptions.maxPlayers = $scope.slider.max;
+
+    setTimeOfDateFromSeconds($scope.gameOptions.date, $scope.gameOptions.time);
 
     // Check gameOptions for valid input.
     if (!$scope.gameOptions.date || !$scope.gameOptions.time || !$scope.gameOptions.sport || !$scope.gameOptions.place || !$scope.gameOptions.skillLevel) {

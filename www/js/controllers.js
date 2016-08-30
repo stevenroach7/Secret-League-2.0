@@ -125,6 +125,8 @@ angular.module('starter.controllers', [])
     return ($scope.getNumPlayersInGame(game) >= game.minPlayers);
   };
 
+  // TODO: Add are you sure? alert if you are leaving you're own game.
+
 
   $scope.gameDisplayOptions = function(game) {
     /* Takes a game and returns an integer corresponding to what should be displayed below the game. */
@@ -160,9 +162,8 @@ angular.module('starter.controllers', [])
 
 .controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, DateService, ionicTimePicker, $ionicPopup) {
 
-  // TODO: Fix bug where games do not always show up immediately.
 
-
+  // TODO; Add invite players to game
 
   $scope.athlete = TestProfileData.getAthlete(0); // TODO: Change 0 to userID of authenticated user.
 
@@ -261,7 +262,6 @@ angular.module('starter.controllers', [])
 
     $scope.gameOptions.minPlayers = $scope.slider.min;
     $scope.gameOptions.maxPlayers = $scope.slider.max;
-    console.log($scope.gameOptions);
 
     // Check gameOptions for valid input.
     if (!$scope.gameOptions.date || !$scope.gameOptions.time || !$scope.gameOptions.sport || !$scope.gameOptions.place || !$scope.gameOptions.skillLevel) {
@@ -270,7 +270,6 @@ angular.module('starter.controllers', [])
       showAlert("Please choose a valid date.");
     } else { // Input is valid.
       $scope.games.push($scope.gameOptions); // add newly created game to games array.
-      console.log($scope.games);
 
       // Get date String of newly created game so we can redirect to that date
       var date = $scope.gameOptions.date;

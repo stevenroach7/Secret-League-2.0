@@ -4,7 +4,7 @@
 
   servMod.factory('TestProfileData', function() {
 
-    var athletes =
+    var athletes = // TODO: Refactor how athletes are stored. Put an object, userID is key. 
     [
       {
       userID: 0,
@@ -106,7 +106,7 @@
 
   servMod.factory('TestGamesData', function() {
 
-    var games =
+    var games = // TODO: Refactor how games are stored. Put them in an object, First by dateString, then by id
     [
       {
         id: 0,
@@ -161,6 +161,7 @@
         }
         return null;
       }
+      // TODO: Add sort games by date
     };
 
 

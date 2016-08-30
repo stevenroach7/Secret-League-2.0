@@ -22,6 +22,7 @@
       <h4>Roster</h4>
       <h5>{{getNumPlayersInGame(game)}}/{{game.maxPlayers}}</h5>
       <ion-list>
+        <!-- TODO: Fix bug where player doesn't go away when removed sometimes -->
         <ion-item ng-repeat="player in getPlayersInGame(game.id)" ng-click="viewProfile(player)">
           {{player.name}}
         </ion-item>

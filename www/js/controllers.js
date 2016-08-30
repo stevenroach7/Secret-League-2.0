@@ -126,10 +126,18 @@ angular.module('starter.controllers', [])
     }
   };
 
-
   // Check if game is full
 
+  // TODO: Test these. 
+  $scope.isGameFull = function(game) {
+    /* Takes a game and returns a boolean for if the game has the maxiumum amount of players. */
+    return (getNumPlayersInGame(game) >= game.maxPlayers);
+  };
+
   // Check if game is at or above minimum players
+  $scope.isGameOverMin = function(game) {
+    return (getNumPlayersInGame(game) >= game.minPlayers);
+  };
 
 
 })

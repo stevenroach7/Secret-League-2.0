@@ -44,27 +44,18 @@ angular.module('starter.controllers', [])
   });
 
 
+  var arrayIncludes = function(arr, elem) {
+    /* Takes an array and an object and returns if the object is in the array. */
+    return (arr.indexOf(elem) != -1);
+  };
+
   $scope.viewPlayers = function(game) {
     $scope.game = game; // Add game object we are inviting players to.
 
     var athletes = TestProfileData.getAthletes(); // Get list of athletes
 
-    // Clear invitedPlayerIDs array
-    $scope.game.invitedPlayerIDs = [];
+    $scope.players = TestProfileData.getPlayersArray(athletes, $scope.athlete.userID, $scope.game);
 
-    // TODO: Move this code to a service.
-    $scope.players = [];
-
-    for (var i = 0; i < athletes.length; i++) {
-      if (athletes[i].userID !== 0) { // TODO: Replace with ID of authenticated user.
-        var player = {
-          userID: athletes[i].userID,
-          name: athletes[i].name,
-          invited: false
-        };
-        $scope.players.push(player);
-      }
-    }
     $scope.playersModal.show(); // Open modal
   };
 
@@ -75,10 +66,14 @@ angular.module('starter.controllers', [])
   $scope.inviteSelectedPlayers = function() {
     /* Invites the players selected and closes the window. */
 
+    $scope.game.invitedPlayerIDs = [];
+
     // Add invited player id's to game object.
     for (var i = 0; i < $scope.players.length; i++) {
       if ($scope.players[i].invited) {
+        if (!arrayIncludes($scope.game.invitedPlayerIDs, $scope.players[i].userID)) {
         $scope.game.invitedPlayerIDs.push($scope.players[i].userID);
+        }
       }
     }
 

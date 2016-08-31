@@ -56,6 +56,29 @@
       },
       getAthletes: function() {
         return athletes;
+      },
+      getPlayersArray: function(athleteObjects, userID, game) {
+
+        // TODO: Clean this up
+        
+        var arrayIncludes = function(arr, elem) {
+          /* Takes an array and an object and returns if the object is in the array. */
+          return (arr.indexOf(elem) != -1);
+        };
+
+        var players = [];
+
+        for (var i = 0; i < athleteObjects.length; i++) {
+          if (athleteObjects[i].userID !== userID) { // TODO: Replace with ID of authenticated user.
+            var player = {
+              userID: athleteObjects[i].userID,
+              name: athleteObjects[i].name,
+              invited: arrayIncludes(game.invitedPlayerIDs, athleteObjects[i].userID)
+            };
+            players.push(player);
+          }
+        }
+        return players;
       }
     };
 

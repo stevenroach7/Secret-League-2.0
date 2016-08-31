@@ -19,7 +19,7 @@
       userID: 1,
       name: "Vivi Gregorich",
       gradYear: "2018",
-      pic: "img/Trier_Joe.png",
+      pic: "img/vivi.png",
       skillLevel: "Casual/Competitive",
       favAthlete: "David Garrard",
       bio: "Ball is life."
@@ -28,7 +28,7 @@
       userID: 2,
       name: "Ben Sydel",
       gradYear: "2018",
-      pic: "img/Trier_Joe.png",
+      pic: "img/ben.png",
       skillLevel: "Casual/Competitive",
       favAthlete: "Chad Henne",
       bio: "Tired of losing."
@@ -60,7 +60,7 @@
       getPlayersArray: function(athleteObjects, userID, game) {
 
         // TODO: Clean this up
-        
+
         var arrayIncludes = function(arr, elem) {
           /* Takes an array and an object and returns if the object is in the array. */
           return (arr.indexOf(elem) != -1);

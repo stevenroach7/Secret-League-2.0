@@ -10,8 +10,8 @@
   <ion-content on-swipe-down="closeProfile()">
 
     <div class="profile-top"> <!-- Top half of page -->
-      <div class="profile-pic"> <img ng-src="{{athlete.pic}}" alt="{{athlete.name}}"></div>
-      <h4 class="profile-name">{{athlete.name}}</h4>
+      <div class="profile-pic"> <img ng-src="{{athleteProfile.pic}}" alt="{{athleteProfile.name}}"></div>
+      <h4 class="profile-name">{{athleteProfile.name}}</h4>
     </div>
 
 
@@ -20,20 +20,20 @@
     Info
     </div>
     <a class="item item-unselectable">
-      <h2><b>Year: </b>{{athlete.gradYear}}</h2>
+      <h2><b>Year: </b>{{athleteProfile.gradYear}}</h2>
     </a>
     <a class="item item-unselectable">
-      <h2><b>Bio:</b> {{athlete.bio}}</h2>
+      <h2><b>Bio:</b> {{athleteProfile.bio}}</h2>
     </a>
     <a class="item item-unselectable">
-      <h2><b>Skill Level:</b> {{athlete.skillLevel}}</h2>
+      <h2><b>Skill Level:</b> {{athleteProfile.skillLevel}}</h2>
     </a>
     <a class="item item-unselectable">
-      <h2><b>Favorite Athlete:</b> {{athlete.favAthlete}}</h2>
+      <h2><b>Favorite Athlete:</b> {{athleteProfile.favAthlete}}</h2>
     </a>
 
     <!-- TODO: Create games created modal -->
-    
+
   </ion-content>
 
 </ion-modal-view>

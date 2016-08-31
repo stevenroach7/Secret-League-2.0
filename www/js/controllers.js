@@ -12,7 +12,9 @@ angular.module('starter.controllers', [])
 
   var currentDate = new Date();
   $scope.currentDateString = DateService.dateToDateString(currentDate);
-  $scope.athlete = null; // initialize athlete variable that will be used to display data in modal.
+  $scope.athleteProfile = null; // initialize athlete variable that will be used to display data in modal.
+  $scope.athlete = TestProfileData.getAthlete(0); // TODO: Change 0 to userID of authenticated user
+
 
   // Create the viewProfile modal that we will use later
   $ionicModal.fromTemplateUrl('templates/profile-modal.html', {
@@ -23,7 +25,7 @@ angular.module('starter.controllers', [])
 
 
   $scope.viewProfile = function(athlete) {
-    $scope.athlete = athlete; // Set $scope.athlete (in parent scope)
+    $scope.athleteProfile = athlete; // Set $scope.athlete (in parent scope)
     $scope.profileModal.show(); // Open modal
   };
 
@@ -32,7 +34,7 @@ angular.module('starter.controllers', [])
   };
 
 
-  $scope.players = null; // TODO: Change this potentially.
+  // TODO: Clean up this code.
 
   // Create the viewPlayers modal that we will use later
   $ionicModal.fromTemplateUrl('templates/players-modal.html', {
@@ -42,17 +44,26 @@ angular.module('starter.controllers', [])
   });
 
 
-  $scope.viewPlayers = function(athlete) {
-    var athletes = TestProfileData.getAthletes();
+  $scope.viewPlayers = function(game) {
+    $scope.game = game; // Add game object we are inviting players to.
+
+    var athletes = TestProfileData.getAthletes(); // Get list of athletes
+
+    // Clear invitedPlayerIDs array
+    $scope.game.invitedPlayerIDs = [];
+
+    // TODO: Move this code to a service.
     $scope.players = [];
 
     for (var i = 0; i < athletes.length; i++) {
-      var player = {
-        userID: athletes[i].userID,
-        name: athletes[i].name,
-        invited: false
-      };
-      $scope.players.push(player);
+      if (athletes[i].userID !== 0) { // TODO: Replace with ID of authenticated user.
+        var player = {
+          userID: athletes[i].userID,
+          name: athletes[i].name,
+          invited: false
+        };
+        $scope.players.push(player);
+      }
     }
     $scope.playersModal.show(); // Open modal
   };
@@ -61,10 +72,16 @@ angular.module('starter.controllers', [])
     $scope.playersModal.hide(); // Close modal
   };
 
-  // TODO: Finish this.
   $scope.inviteSelectedPlayers = function() {
     /* Invites the players selected and closes the window. */
-    console.log($scope.players);
+
+    // Add invited player id's to game object.
+    for (var i = 0; i < $scope.players.length; i++) {
+      if ($scope.players[i].invited) {
+        $scope.game.invitedPlayerIDs.push($scope.players[i].userID);
+      }
+    }
+
     $scope.closePlayers();
   };
 
@@ -85,7 +102,6 @@ angular.module('starter.controllers', [])
 
   $scope.games = TestGamesData.getGamesByDate($scope.date);
 
-  $scope.athlete = TestProfileData.getAthlete(0); // TODO: Change 0 to userID of authenticated user.
 
   $scope.getNextDateString = function() {
     /* Returns the date string for the next date. */
@@ -229,8 +245,6 @@ angular.module('starter.controllers', [])
 .controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, DateService, ionicTimePicker, $ionicPopup) {
 
 
-  // TODO; Add invite players to game
-
   $scope.athlete = TestProfileData.getAthlete(0); // TODO: Change 0 to userID of authenticated user.
 
   var roundToNextHour = function(seconds) {
@@ -251,7 +265,9 @@ angular.module('starter.controllers', [])
       minPlayers: null,
       maxPlayers: null,
       gameCreatorID: $scope.athlete.userID,
-      playerIDs: [$scope.athlete.userID]
+      playerIDs: [$scope.athlete.userID],
+      invitedPlayerIDs: []
+
     };
 
     $scope.slider = {
@@ -303,11 +319,14 @@ angular.module('starter.controllers', [])
   $scope.games = TestGamesData.getGames();
 
 
-
-  // TODO: Create function to open invite players modal.
+  $scope.getNumPlayersInvited = function(game) {
+    /* Takes a game object and returns the length of the invitedPlayerIDs array in it. */
+    return game.invitedPlayerIDs.length;
+  };
 
 
   var showAlert = function(message) {
+    console.log($scope.gameOptions);
     var alertPopup = $ionicPopup.alert({
       title: 'Invalid Input',
       template: message

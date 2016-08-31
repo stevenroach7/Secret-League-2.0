@@ -118,7 +118,8 @@
         minPlayers: 2,
         maxPlayers: 15,
         gameCreatorID: 0,
-        playerIDs: [0,1,2]
+        playerIDs: [0,1,2],
+        invitedPlayerIDs: []
       },
       {
         id: 1,
@@ -130,7 +131,8 @@
         minPlayers: 2,
         maxPlayers: 3,
         gameCreatorID: 1,
-        playerIDs: [1,3]
+        playerIDs: [1,3],
+        invitedPlayerIDs: []
       }
 
     ];

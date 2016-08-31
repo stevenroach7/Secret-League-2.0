@@ -46,9 +46,9 @@
             <rzslider rz-slider-model="slider.min" rz-slider-high="slider.max" rz-slider-options="slider.options"></rzslider>
           </div>
       </label>
-      <!-- TODO: Create invite players modal.  -->
-      <label class="item item-select invite-item" ng-click="viewPlayers();">
+      <label class="item item-select invite-item" ng-click="viewPlayers(gameOptions);">
           <span class="input-label">Invite Players</span>
+          <span class="time-display">{{getNumPlayersInvited(gameOptions)}} Players Invited</span>
       </label>
       <label class="item create-game-item">
         <button id="create-game-button" class="button button-positive button-block" ng-click="createGame();">Create Game</button>

@@ -9,17 +9,14 @@
 
   <ion-content on-swipe-down="closePlayers()">
 
-
-
     <ion-list>
       <ion-checkbox ng-repeat="player in players" ng-model="player.invited">
         {{player.name}}
       </ion-checkbox>
-      <label class="item">
-        <button class="button button-positive button-block" ng-click="inviteSelectedPlayers();">Invite</button>
-      </label>
     </ion-list>
-
+    <label class="item">
+      <button class="button button-positive button-block" ng-click="inviteSelectedPlayers();">Invite</button>
+    </label>
 
   </ion-content>
 

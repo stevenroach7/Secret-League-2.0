@@ -26,6 +26,11 @@
           {{player.name}}
         </ion-item>
 
+        <ion-item ng-show="isGameCreator(game, athlete)"class="item item-select invite-item" ng-click="viewPlayers(game);">
+            <span class="input-label">Invite Players</span>
+            <span class="invite-display">{{getNumPlayersInvited(game) | displayNumInvitedPlayers}}</span>
+        </ion-item>
+
         <ion-item ng-switch="gameDisplayOptions(game)">
           <button ng-switch-when=0 class="button button-positive button-block" ng-click="leaveGame(game)">Leave Game</button>
           <p ng-switch-when=1>Game is full</p>

@@ -36,6 +36,12 @@ angular.module('starter.controllers', [])
 
   // TODO: Clean up this code.
 
+  $scope.getNumPlayersInvited = function(game) {
+    /* Takes a game object and returns the length of the invitedPlayerIDs array in it. */
+    return game.invitedPlayerIDs.length;
+  };
+
+
   // Create the viewPlayers modal that we will use later
   $ionicModal.fromTemplateUrl('templates/players-modal.html', {
     scope: $scope
@@ -193,7 +199,7 @@ angular.module('starter.controllers', [])
     }
   };
 
-  var isGameCreator = function(game, athlete) {
+  $scope.isGameCreator = function(game, athlete) {
     /* Takes a game and an athlete and returns a boolean for if the game was created by that athlete. */
     return game.gameCreatorID === athlete.userID;
   };
@@ -225,7 +231,7 @@ angular.module('starter.controllers', [])
   $scope.leaveGame = function(game) {
     /* Removes authenticated user from playerIDs array in game. */
     if (isAthleteInGame(game, $scope.athlete)) { // Make sure athlete is in game alerady
-      if (isGameCreator(game, $scope.athlete)) { // Check to see if athlete created game so we can show an alert if so.
+      if ($scope.isGameCreator(game, $scope.athlete)) { // Check to see if athlete created game so we can show an alert if so.
         showConfirm(game); // Show confirm popup
       } else {
         removeElemFromArray(game.playerIDs, $scope.athlete.userID);
@@ -312,12 +318,6 @@ angular.module('starter.controllers', [])
   };
 
   $scope.games = TestGamesData.getGames();
-
-
-  $scope.getNumPlayersInvited = function(game) {
-    /* Takes a game object and returns the length of the invitedPlayerIDs array in it. */
-    return game.invitedPlayerIDs.length;
-  };
 
 
   var showAlert = function(message) {

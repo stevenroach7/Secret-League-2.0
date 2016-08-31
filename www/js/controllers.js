@@ -441,6 +441,17 @@ angular.module('starter.controllers', [])
       var strTime = hours + ':' + minutes + ' ' + ampm;
       return strTime;
     };
+  })
+  .filter('displayNumInvitedPlayers', function($filter) {
+    return function(num) {
+      var label = "";
+      if (num === 1) {
+        label = "Player Invited";
+      } else {
+        label = "Players Invited";
+      }
+      return num + " " + label;
+    };
   });
 
 }());

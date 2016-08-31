@@ -48,7 +48,7 @@
       </label>
       <label class="item item-select invite-item" ng-click="viewPlayers(gameOptions);">
           <span class="input-label">Invite Players</span>
-          <span class="time-display">{{getNumPlayersInvited(gameOptions)}} Players Invited</span>
+          <span class="invite-display">{{getNumPlayersInvited(gameOptions) | displayNumInvitedPlayers}}</span>
       </label>
       <label class="item create-game-item">
         <button id="create-game-button" class="button button-positive button-block" ng-click="createGame();">Create Game</button>

@@ -39,11 +39,11 @@
   padding-right: 14% !important;
 }
 
-.time-display, .input-label {
+.time-display, .input-label, .invite-display {
   display: inline-block;
 }
 
-.time-display {
+.time-display, .invite-display {
   float: right;
   margin-right: 10%;
   font-size: 15px;

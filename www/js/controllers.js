@@ -267,6 +267,7 @@ angular.module('starter.controllers', [])
     });
   };
 
+
   var resetGameOptions = function() {
     var currentDate = new Date();
     $scope.gameOptions = {
@@ -284,7 +285,7 @@ angular.module('starter.controllers', [])
 
     };
 
-    refreshSlider();
+    refreshSlider(); // TODO: This is causing the slider to move on page-load. I think I should get rid of the slider. 
     // https://github.com/angular-slider/angularjs-slider
     $scope.slider = {
       min: 5,

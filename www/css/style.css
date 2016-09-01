@@ -40,7 +40,7 @@
 }
 
 .time-item, .sport-item, .place-item, .skill-item, .invite-item {
-  line-height: 80%;
+  line-height: 60%;
 }
 
 .date-input {
@@ -104,6 +104,7 @@
 .close-footer {
   background-color: #886aea;
   display: inline-block;
+  height: 7%;
 }
 
 .close-icon {

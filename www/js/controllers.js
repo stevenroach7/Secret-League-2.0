@@ -78,7 +78,7 @@ angular.module('starter.controllers', [])
     for (var i = 0; i < $scope.players.length; i++) {
       if ($scope.players[i].invited) {
         if (!arrayIncludes($scope.game.invitedPlayerIDs, $scope.players[i].userID)) {
-        $scope.game.invitedPlayerIDs.push($scope.players[i].userID);
+          $scope.game.invitedPlayerIDs.push($scope.players[i].userID);
         }
       }
     }

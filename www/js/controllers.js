@@ -210,7 +210,8 @@ angular.module('starter.controllers', [])
     var confirmPopup = $ionicPopup.confirm({
       title: 'Leaving Your Own Game?',
       template: 'Are you sure you want to leave a game you created?',
-      okText: 'Yes'
+      okText: 'Yes',
+      cssClass: 'leave-confirm-popup'
     });
 
     confirmPopup.then(function(res) {
@@ -324,7 +325,8 @@ angular.module('starter.controllers', [])
     console.log($scope.gameOptions);
     var alertPopup = $ionicPopup.alert({
       title: 'Invalid Input',
-      template: message
+      template: message,
+      cssClass: 'invalid-input-popup'
     });
   };
 

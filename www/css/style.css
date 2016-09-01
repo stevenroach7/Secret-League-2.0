@@ -99,6 +99,26 @@
   overflow: hidden;
 }
 
+
+/* Profile modal */
+.close-footer {
+  background-color: #886aea;
+  display: inline-block;
+}
+
+.close-icon {
+  text-align: center;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
 /* Leaving own game confirm popup on find-game page. */
 .leave-confirm-popup .popup-buttons .button:last-child {
   border-color: transparent;

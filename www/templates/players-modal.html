@@ -2,9 +2,9 @@
 
   <ion-header-bar class="bar-stable">
     <h1 class="title">Invite Players</h1>
-    <div class="buttons">
+    <!-- <div class="buttons">
       <button class="button button-clear" ng-click="closePlayers()">Close</button>
-    </div>
+    </div> -->
   </ion-header-bar>
 
   <ion-content on-swipe-down="closePlayers()">
@@ -19,5 +19,9 @@
     </label>
 
   </ion-content>
+
+  <div class="bar bar-footer close-footer" ng-click="closePlayers();">
+    <h2 class="close-icon icon ion-close-round"></h2>
+  </div>
 
 </ion-modal-view>

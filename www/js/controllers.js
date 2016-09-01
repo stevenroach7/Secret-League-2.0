@@ -244,7 +244,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, DateService, ionicTimePicker, $ionicPopup) {
+.controller('CreateGameCtrl', function($scope, $location, TestGamesData, TestProfileData, DateService, ionicTimePicker, $ionicPopup, $timeout) {
 
 
   $scope.athlete = TestProfileData.getAthlete(0); // TODO: Change 0 to userID of authenticated user.
@@ -253,6 +253,15 @@ angular.module('starter.controllers', [])
     /* Helper function that takes a time in seconds and returns the time of the upcoming whole hour in seconds. */
     var hours = Math.floor(seconds / 3600);
     return (hours + 1) * 3600;
+  };
+
+  // TODO: Decide if view should be cached ever. 
+
+  var refreshSlider = function () {
+    /* Forces the slider to render. */
+    $timeout(function () {
+        $scope.$broadcast('rzSliderForceRender');
+    });
   };
 
   var resetGameOptions = function() {
@@ -272,6 +281,8 @@ angular.module('starter.controllers', [])
 
     };
 
+    refreshSlider();
+    // https://github.com/angular-slider/angularjs-slider
     $scope.slider = {
       min: 5,
       max: 15,
@@ -280,6 +291,8 @@ angular.module('starter.controllers', [])
         ceil: 20
       }
     };
+
+
   };
 
   resetGameOptions();
@@ -308,15 +321,8 @@ angular.module('starter.controllers', [])
     ionicTimePicker.openTimePicker(ipObj1);
   };
 
-  // https://github.com/angular-slider/angularjs-slider
-  $scope.slider = {
-    min: 5,
-    max: 15,
-    options: {
-      floor: 2,
-      ceil: 20
-    }
-  };
+
+
 
   $scope.games = TestGamesData.getGames();
 

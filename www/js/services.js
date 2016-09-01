@@ -133,12 +133,15 @@
 
   servMod.factory('TestGamesData', function() {
 
+    var d = new Date(), e = new Date(d);
+    var secondsSinceMidnight = (e - d.setHours(0,0,0,0)) / 1000;
+
     var games = // TODO: Refactor how games are stored. Put them in an object, First by dateString, then by id
     [
       {
         id: 0,
-        date: new Date(),
-        time: 7000, // Current time in seconds
+        date: d,
+        time: secondsSinceMidnight, // Current time in seconds
         sport: "Basketball",
         place: "Leonard Center Field House",
         skillLevel: "Casual/Competitive",
@@ -150,8 +153,8 @@
       },
       {
         id: 1,
-        date: new Date(),
-        time: 3000, // Current time in seconds
+        date: d,
+        time: secondsSinceMidnight, // Current time in seconds
         sport: "Basketball",
         place: "Leonard Center Alumni Gym",
         skillLevel: "Casual",
@@ -182,6 +185,11 @@
         }
         return gamesByDate;
       },
+      sortGamesByDate: function(gamesArray) {
+        gamesArray.sort(function(game1, game2) {
+        return game1.date - game2.date;
+        });
+      },
       getGame: function(gameID) { // TODO: Rewrite to be more efficient.
         for (var i = 0; i < games.length; i++) {
           if (games[i].id === gameID) {
@@ -190,7 +198,6 @@
         }
         return null;
       }
-      // TODO: Add function to create sorted games array
     };
 
 

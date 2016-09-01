@@ -102,8 +102,9 @@ angular.module('starter.controllers', [])
   $scope.date = DateService.dateStringToDate($stateParams.dateString);
 
   $scope.games = TestGamesData.getGamesByDate($scope.date);
+  TestGamesData.sortGamesByDate($scope.games);
 
-  // TODO: Make games in past days unjoinable. 
+  // TODO: Make games in past days unjoinable.
 
 
   $scope.getNextDateString = function() {
@@ -330,7 +331,6 @@ angular.module('starter.controllers', [])
 
 
   var showAlert = function(message) {
-    console.log($scope.gameOptions);
     var alertPopup = $ionicPopup.alert({
       title: 'Invalid Input',
       template: message,

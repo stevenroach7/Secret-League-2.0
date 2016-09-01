@@ -71,11 +71,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   // Each tab has its own nav history stack:
 
-  .state('tab.calendar', {
-    url: '/calendar',
+  .state('tab.schedule', {
+    url: '/schedule',
     views: {
-      'calendar': {
-        templateUrl: 'templates/calendar.html',
+      'schedule': {
+        templateUrl: 'templates/schedule.html',
         controller: 'CalendarCtrl'
       }
     }
@@ -113,6 +113,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/calendar');
+  $urlRouterProvider.otherwise('/tab/schedule');
 
 });

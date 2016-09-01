@@ -260,7 +260,7 @@ angular.module('starter.controllers', [])
       id: (currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds(), // TODO: Create Auto Id generator function or do this elsewhere.
       date: currentDate,
       time: roundToNextHour((currentDate.getHours() * 3600) + (currentDate.getMinutes() * 60) + currentDate.getSeconds()), // Current time in seconds
-      sport: null,
+      sport: "Basketball",
       place: null,
       skillLevel: $scope.athlete.skillLevel,
       minPlayers: null,

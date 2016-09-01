@@ -103,6 +103,8 @@ angular.module('starter.controllers', [])
 
   $scope.games = TestGamesData.getGamesByDate($scope.date);
 
+  // TODO: Make games in past days unjoinable. 
+
 
   $scope.getNextDateString = function() {
     /* Returns the date string for the next date. */
@@ -255,7 +257,7 @@ angular.module('starter.controllers', [])
     return (hours + 1) * 3600;
   };
 
-  // TODO: Decide if view should be cached ever. 
+  // TODO: Decide if view should be cached ever.
 
   var refreshSlider = function () {
     /* Forces the slider to render. */

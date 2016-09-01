@@ -13,7 +13,8 @@
       pic: "img/Trier_Joe.png",
       skillLevel: "Competitive",
       favAthlete: "Byron Leftwich",
-      bio: "Always ready to play."
+      bio: "Always ready to play.",
+      gamesPlayed: 0
     },
     {
       userID: 1,
@@ -22,7 +23,8 @@
       pic: "img/vivi.png",
       skillLevel: "Casual/Competitive",
       favAthlete: "David Garrard",
-      bio: "Ball is life."
+      bio: "Ball is life.",
+      gamesPlayed: 0
     },
     {
       userID: 2,
@@ -31,7 +33,8 @@
       pic: "img/ben.png",
       skillLevel: "Casual/Competitive",
       favAthlete: "Chad Henne",
-      bio: "Tired of losing."
+      bio: "Tired of losing.",
+      gamesPlayed: 0
     },
     {
       userID: 3,
@@ -40,7 +43,8 @@
       pic: "img/Steven.png",
       skillLevel: "Casual/Competitive",
       favAthlete: "Rafael Nadal",
-      bio: "Game, Set, Match."
+      bio: "Game, Set, Match.",
+      gamesPlayed: 0
     }
 
   ];

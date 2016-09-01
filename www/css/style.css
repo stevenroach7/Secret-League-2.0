@@ -4,6 +4,15 @@
 /* Purple: #7A3FF3*/
 
 /* General CSS */
+
+
+/*.purple-color {
+  background-color: #7A3FF3;
+}*/
+
+
+
+
  .title-shadow {
   text-shadow: 2px 2px 2px #CCCCCC;
 }
@@ -21,7 +30,7 @@
 }
 
 .game-display {
-  border: 2px solid #387ef5;
+  border: 2px solid #886aea;
   margin: 2% 0;
 }
 
@@ -52,12 +61,12 @@
 
 /* Timepicker Styling */
 .heading, .button_set, .button_close {
-  background-color: #387ef5 !important;
+  background-color: #886aea !important;
 }
 
 /* Slider Styling */
 .rz-pointer, .rz-selection {
-  background-color: #387ef5 !important;
+  background-color: #886aea !important;
 }
 
 

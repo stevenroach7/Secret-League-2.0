@@ -403,7 +403,7 @@ angular.module('starter.controllers', [])
         text: 'Cancel'
       }, {
         text: 'Submit',
-        type: 'button-positive',
+        type: 'button-royal',
         onTap: function(e) {
           return $scope.data;
         }

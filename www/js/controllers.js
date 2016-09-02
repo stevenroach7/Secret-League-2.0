@@ -152,6 +152,11 @@ angular.module('starter.controllers', [])
     return athlete;
   };
 
+  $scope.togglePlayersVisible = function(game) {
+    game.playersVisible = (!game.playersVisible);
+  };
+
+
 
   // TODO: Gane joining code.
 
@@ -167,7 +172,6 @@ angular.module('starter.controllers', [])
       arr.splice(index, 1);
     }
   };
-
 
   var isAthleteInGame = function(game, athlete) {
     /* Takes a game and an athlete and returns a boolean for if the athlete is in the playerIDs array of the game. */
@@ -281,11 +285,11 @@ angular.module('starter.controllers', [])
       maxPlayers: null,
       gameCreatorID: $scope.athlete.userID,
       playerIDs: [$scope.athlete.userID],
-      invitedPlayerIDs: []
-
+      invitedPlayerIDs: [],
+      playersVisible: false
     };
 
-    refreshSlider(); // TODO: This is causing the slider to move on page-load. I think I should get rid of the slider. 
+    refreshSlider(); // TODO: This is causing the slider to move on page-load. I think I should get rid of the slider.
     // https://github.com/angular-slider/angularjs-slider
     $scope.slider = {
       min: 5,

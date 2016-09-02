@@ -149,7 +149,8 @@
         maxPlayers: 15,
         gameCreatorID: 0,
         playerIDs: [0,1,2],
-        invitedPlayerIDs: []
+        invitedPlayerIDs: [],
+        playersVisible: false
       },
       {
         id: 1,
@@ -162,7 +163,8 @@
         maxPlayers: 3,
         gameCreatorID: 1,
         playerIDs: [1,3],
-        invitedPlayerIDs: []
+        invitedPlayerIDs: [],
+        playersVisible: false
       }
 
     ];

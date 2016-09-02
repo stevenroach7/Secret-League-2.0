@@ -34,6 +34,16 @@
   margin: 2% 0;
 }
 
+.roster-item {
+  background-color: #886aea;
+  color: #fff;
+}
+
+.invite-players {
+  /*background-color: #a2a2a2;
+  color: #fff;*/
+}
+
 /* create-game styling */
 .date-item {
   line-height: 200%;

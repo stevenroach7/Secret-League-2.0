@@ -32,7 +32,7 @@
           {{player.name}}
         </ion-item>
 
-        <ion-item ng-show="isGameCreator(game, athlete)"class="item item-select invite-players" ng-click="viewPlayers(game);">
+        <ion-item ng-show="showInvitePlayers(game, athlete)"class="item item-select invite-players" ng-click="viewPlayers(game);">
             <span class="input-label">Invite Players</span>
             <span class="invite-display">{{getNumPlayersInvited(game) | displayNumInvitedPlayers}}</span>
         </ion-item>

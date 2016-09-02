@@ -190,7 +190,11 @@ angular.module('starter.controllers', [])
     return ($scope.getNumPlayersInGame(game) >= game.minPlayers);
   };
 
-  // TODO: Add are you sure? alert if you are leaving you're own game.
+  $scope.showInvitePlayers = function(game, athlete) {
+    /* Takes a game and an athlete and returns true if the game is not full and the athlete is in the game. Else returns false.
+    This determines whether the invite players item should be shown in the find-game page. */
+    return (isAthleteInGame(game, athlete) && !isGameFull(game));
+  };
 
 
   $scope.gameDisplayOptions = function(game) {

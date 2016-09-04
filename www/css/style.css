@@ -6,11 +6,6 @@
 /* General CSS */
 
 
-/*.purple-color {
-  background-color: #7A3FF3;
-}*/
-
-
 
 
  .title-shadow {
@@ -20,8 +15,6 @@
 .item-unselectable.activated { /* The item-unselectable class is for items that are unselectable. */
   background: #fff; /* Set color when selected to be white. It already is white so it ends up having no effect. */
 }
-
-
 
 /* find-game styling */
 .date-title {
@@ -107,6 +100,16 @@
   width: 200px;
   height: 200px;
   overflow: hidden;
+}
+
+.profile-divider {
+  /*height: 20%;*/
+}
+
+.edit-button {
+  float: right;
+  /*line-height: 5%;*/
+  /*height: 5%;*/
 }
 
 

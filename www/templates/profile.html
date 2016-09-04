@@ -8,9 +8,10 @@
 
     <!-- Bottom half of page -->
 
-
+    <!-- TODO: FIX THIS -->
     <div class="item item-divider profile-divider">
-    Info
+      <span>Info</span>
+      <span class="button button-royal button-clear edit-button" ng-click="showProfilePopup(athlete)">Edit Profile</span>
     </div>
     <a class="item item-unselectable">
       <h2><b>Year: </b>{{athlete.gradYear}}</h2>
@@ -28,9 +29,5 @@
       <h2><b>Games Played:</b> {{athlete.gamesPlayed}}</h2>
     </a>
 
-    <!-- TODO: Create games created modal -->
-
-    <!-- <div class="spacer" style="width: 300px; height: 5px;"></div> -->
-    <button class="button button-royal button-block button-clear" ng-click="showProfilePopup(athlete)">Edit Profile</button>
   </ion-content>
 </ion-view>

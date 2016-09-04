@@ -10,7 +10,7 @@
   <ion-content on-swipe-down="closePlayers()">
 
     <ion-list>
-      <ion-checkbox ng-repeat="player in players" ng-model="player.invited">
+      <ion-checkbox class="checkbox-royal" ng-repeat="player in players" ng-model="player.invited">
         {{player.name}}
       </ion-checkbox>
     </ion-list>

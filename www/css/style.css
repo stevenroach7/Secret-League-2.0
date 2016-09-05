@@ -23,8 +23,6 @@
   background-color: #424242;
   align-items: center;
   border-color: #424242;
-  /*z-index: -1;
-  position: relative;*/
 }
 
 .sport-label {
@@ -46,18 +44,65 @@
   border-left: solid 35px;
   border-right: solid 35px;
   border-color: #886aea;
-  margin-top: -2.8%;
+  /*margin-top: -2.8%;*/
+}
+
+.location-pic {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  /*display: block;*/
+  /*font-size: 0;*/
+}
+.img-location {
+  max-width:100%;
+  max-height:100%;
+  /*border:0;*/
+  /*float: left;*/
+}
+
+
+.location-display, .skill-display {
+  background-color: #a2a2a2;
 }
 
 .roster-item {
-  background-color: #886aea;
-  color: #fff;
+  display: flex;
+  align-items: center;
 }
 
-.invite-players {
-  /*background-color: #a2a2a2;
-  color: #fff;*/
+.roster-icon {
+  font-size: 35px;
+  color: #886aea;
+  padding-right: 5%;
 }
+
+.roster-label {
+  font-size: 25px;
+}
+
+.img-profile {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.player-col, .creator-col {
+  display: flex;
+  align-items: center;
+}
+
+.player-label {
+  font-size: 20px;
+}
+
+.creator-label {
+  font-size: 11px;
+}
+
 
 /* create-game styling */
 .date-item {

@@ -10,7 +10,7 @@
       userID: 0,
       name: "Joe Trier",
       gradYear: "2018",
-      pic: "img/Trier_Joe.png",
+      pic: "img/joe.png",
       skillLevel: "Competitive",
       favAthlete: "Byron Leftwich",
       bio: "Always ready to play.",

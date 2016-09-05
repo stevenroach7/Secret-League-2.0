@@ -35,31 +35,61 @@
 
       <div class="game-content">
 
-        <h4>{{game.time | secondsToTime}}</h4> <br />
+
+        <div class="row game-details">
+          <div class="col col-50 location-pic">
+            <img class="img-location" ng-src="img/alumni-gym.png" alt="Alumni Gym">
+          </div>
+          <div class="col col-50">
+            <div class="row">
+              <div class="item item-unselectable location-display">
+                <label class="location-title">{{game.place}}</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="item item-unselectable skill-display">
+                <label class="location-title">{{game.skillLevel}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- <h4>{{game.time | secondsToTime}}</h4> <br />
         {{game.sport}} <br />
         {{game.place}} <br />
         {{game.skillLevel}} <br />
-        Created by: {{getAthlete(game.gameCreatorID).name}} <br />
+        Created by: {{getAthlete(game.gameCreatorID).name}} <br /> -->
         <!-- <img ng-src="{{getAthlete(game.gameCreatorID).pic}}" alt="{{getAthlete(game.gameCreatorID).name}}"> -->
 
-        <h4>Roster</h4>
+        <!-- <h4>Roster</h4> -->
         <ion-list>
           <ion-item class="roster-item"ng-click="togglePlayersVisible(game);" ng-switch="game.playersVisible">
-            <span ng-switch-when="false" class="icon ion-arrow-right-b"></span>
-            <span ng-switch-when="true" class="icon ion-arrow-down-b"></span>
-              {{getNumPlayersInGame(game)}}/{{game.maxPlayers}}
+            <i ng-switch-when="false" class="icon ion-arrow-right-b roster-icon"></i>
+            <i ng-switch-when="true" class="icon ion-arrow-down-b roster-icon"></i>
+            <label class="roster-label">Roster: {{getNumPlayersInGame(game)}}/{{game.maxPlayers}}</label>
           </ion-item>
 
 
           <!-- TODO: Fix bug where player doesn't go away when removed sometimes -->
-          <ion-item ng-show="game.playersVisible" ng-repeat="player in getPlayersInGame(game.id)" ng-click="viewProfile(player)">
-            {{player.name}}
+          <ion-item class="row" ng-show="game.playersVisible" ng-repeat="player in getPlayersInGame(game.id)" ng-click="viewProfile(player)">
+            <div class="col-20">
+              <img class="img-profile" ng-src="{{player.pic}}" alt="Alumni Gym">
+            </div>
+            <div class="col player-col">
+              <label class="player-label">{{player.name}}</label>
+            </div>
+            <div class="col creator-col" ng-show="isGameCreator(game, player)">
+              <label class="creator-label">Game Creator</label>
+            </div>
           </ion-item>
 
-          <ion-item ng-show="showInvitePlayers(game, athlete)"class="item item-select invite-players" ng-click="viewPlayers(game);">
+          <!-- <ion-item ng-show="showInvitePlayers(game, athlete)"class="item item-select invite-players" ng-click="viewPlayers(game);">
               <span class="input-label">Invite Players</span>
               <span class="invite-display">{{getNumPlayersInvited(game) | displayNumInvitedPlayers}}</span>
-          </ion-item>
+          </ion-item> -->
 
           <ion-item ng-switch="gameDisplayOptions(game)">
             <button ng-switch-when=0 class="button button-royal button-block" ng-click="leaveGame(game)">Leave Game</button>

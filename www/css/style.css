@@ -23,8 +23,8 @@
   background-color: #424242;
   align-items: center;
   border-color: #424242;
-  z-index: -1;
-  position: relative;
+  /*z-index: -1;
+  position: relative;*/
 }
 
 .sport-label {

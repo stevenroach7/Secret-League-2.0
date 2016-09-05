@@ -1,4 +1,9 @@
-<ion-view view-title="Find Game" cache-view="false">
+<ion-view view-title="Find Games" cache-view="false">
+  <ion-nav-buttons side="right">
+    <a ng-href="#/tab/find-game/{{getCurrentDateString()}}" nav-transition="none" class="button button-royal button-clear">Today</a>
+  </ion-nav-buttons>
+
+
   <ion-content>
 
     <div class="button-bar">
@@ -7,8 +12,6 @@
       <a ng-href="#/tab/find-game/{{getNextDateString()}}" nav-transition="none" class="button button-royal button-block icon ion-android-arrow-forward"></a>
     </div>
 
-
-    <a ng-href="#/tab/find-game/{{getCurrentDateString()}}" nav-transition="none" class="button button-royal button-block">Today</a>
     <h3 class="games-title title-shadow">Games</h3>
     <div class="game-display" ng-repeat="game in games"> <!-- TODO: Style this -->
       <h4>{{game.time | secondsToTime}}</h4> <br />

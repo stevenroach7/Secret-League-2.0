@@ -19,9 +19,22 @@
   margin-right: 5%;
 }
 
-.game-display {
-  border: 2px solid #886aea;
-  margin: 2% 0;
+.game-banner {
+  background-color: #424242;
+  align-items: center;
+}
+
+.sport-label {
+  display: inline;
+  justify-content: center;
+}
+
+.sport-icon, .time-title, .sport-title {
+  color: #ffffff;
+}
+
+.sport-icon {
+  font-size: 38px;
 }
 
 .roster-item {

@@ -97,7 +97,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, DateService, $stateParams, $ionicPopup) {
+.controller('FindGameCtrl', function($scope, TestProfileData, TestGamesData, DateService, $stateParams, $ionicPopup, $ionicScrollDelegate) {
 
   $scope.date = DateService.dateStringToDate($stateParams.dateString);
 
@@ -154,6 +154,7 @@ angular.module('starter.controllers', [])
 
   $scope.togglePlayersVisible = function(game) {
     game.playersVisible = (!game.playersVisible);
+    $ionicScrollDelegate.resize();
   };
 
 

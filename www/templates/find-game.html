@@ -82,7 +82,7 @@
 
 
           <!-- TODO: Fix bug where player doesn't go away when removed sometimes -->
-          <ion-item class="row" ng-show="game.playersVisible" ng-repeat="player in getPlayersInGame(game.id)" ng-click="viewProfile(player)">
+          <ion-item class="row roster" ng-show="game.playersVisible" ng-repeat="player in getPlayersInGame(game.id)" ng-click="viewProfile(player)">
             <div class="col-20">
               <img class="img-profile" ng-src="{{player.pic}}" alt="Alumni Gym">
             </div>

@@ -42,9 +42,9 @@
           </div> -->
           <!-- <div class="col col-50"> -->
         <div class="game-middle">
-          <div class="location-pic">
+          <!-- <div class="location-pic">
             <img class="img-location" ng-src="img/alumni-gym.png" alt="Alumni Gym">
-          </div>
+          </div> -->
 
           <div class="game-details list">
             <!-- <div class="row"> -->
@@ -88,10 +88,11 @@
             </div>
             <div class="col player-col">
               <label class="player-label">{{player.name}}</label>
+              <label ng-show="isGameCreator(game, player)" class="creator-label">Game Creator</label>
             </div>
-            <div class="col creator-col" ng-show="isGameCreator(game, player)">
+            <!-- <div class="col creator-col" ng-show="isGameCreator(game, player)">
               <label class="creator-label">Game Creator</label>
-            </div>
+            </div> -->
           </ion-item>
 
           <!-- <ion-item ng-show="showInvitePlayers(game, athlete)"class="item item-select invite-players" ng-click="viewPlayers(game);">

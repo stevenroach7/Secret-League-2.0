@@ -51,7 +51,7 @@
 }
 
 .game-middle {
-  display: inline-block;;
+  /*display: inline-block;*/
 }
 
 .location-pic {
@@ -115,6 +115,7 @@
 
 .creator-label {
   font-size: 11px;
+  padding-left: 5%;
 }
 
 

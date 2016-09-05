@@ -217,10 +217,10 @@ angular.module('starter.controllers', [])
 
 
   // A confirm dialog
-  var showConfirm = function(game) {
+  var showLeaveConfirm = function(game) {
     var confirmPopup = $ionicPopup.confirm({
-      title: 'Leaving Your Own Game?',
-      template: 'Are you sure you want to leave a game you created?',
+      title: 'Leave Game',
+      template: 'Are you sure you want to leave this game?',
       okText: 'Yes',
       cssClass: 'leave-confirm-popup'
     });
@@ -233,21 +233,38 @@ angular.module('starter.controllers', [])
   };
 
 
+  var showJoinConfirm = function(game) {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Join Game',
+      template: 'Are you sure you want to join this game?',
+      okText: 'Yes',
+      cssClass: 'leave-confirm-popup'
+    });
+
+    confirmPopup.then(function(res) {
+      if(res) { // User confirms choice.
+        game.playerIDs.push($scope.athlete.userID);
+      }
+    });
+  };
+
+
   $scope.joinGame = function(game) {
     /* Adds authenticated user to playerIDs array in game. */
     if (!isAthleteInGame(game, $scope.athlete)) {
-      game.playerIDs.push($scope.athlete.userID);
+      showJoinConfirm(game);
     }
   };
 
   $scope.leaveGame = function(game) {
     /* Removes authenticated user from playerIDs array in game. */
     if (isAthleteInGame(game, $scope.athlete)) { // Make sure athlete is in game alerady
-      if ($scope.isGameCreator(game, $scope.athlete)) { // Check to see if athlete created game so we can show an alert if so.
-        showConfirm(game); // Show confirm popup
-      } else {
-        removeElemFromArray(game.playerIDs, $scope.athlete.userID);
-      }
+      showLeaveConfirm(game);
+      // if ($scope.isGameCreator(game, $scope.athlete)) { // Check to see if athlete created game so we can show an alert if so.
+      //   showConfirm(game); // Show confirm popup
+      // } else {
+      //   removeElemFromArray(game.playerIDs, $scope.athlete.userID);
+      // }
     }
   };
 

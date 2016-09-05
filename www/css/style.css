@@ -125,15 +125,8 @@
 
 .close-icon {
   padding-top: 3%;
-  color: white;
+  color: #ffffff;
 }
-
-
-
-
-
-
-
 
 
 /* Leaving own game confirm popup on find-game page. */
@@ -158,3 +151,6 @@
   border-color: #a2a2a2;
   background-color: #6b46e5;
 }
+
+
+/*#a2a2a2   #424242*/

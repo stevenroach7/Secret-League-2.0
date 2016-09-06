@@ -125,6 +125,12 @@ angular.module('starter.controllers', [])
     return DateService.dateToDateString(currentDate);
   };
 
+
+  $scope.isGamesNull = function(games) {
+    /* Returns true if length of input array is 0. */
+    return games.length === 0;
+  };
+
   var getPlayersByID = function(playerIDs) {
     /* Helper function that takes an array of playerIDs and returns a corresponding array of athletes. */
     var players = [];

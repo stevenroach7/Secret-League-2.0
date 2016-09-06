@@ -16,9 +16,10 @@
       <a ng-href="#/tab/find-game/{{getNextDateString()}}" nav-transition="none" class="button button-royal button-block icon ion-android-arrow-forward"></a>
     </div>
 
-
-    <!-- TODO: Add message if no games are scheduled. -->
-
+    <!-- Display if no games are scheduled so screen isn't blank. -->
+    <ion-item class="no-games item item-unselectable" ng-show="isGamesNull(games)">
+      No Games Scheduled
+    </ion-item>
 
     <div class="game-display" ng-repeat="game in games"> <!-- TODO: Style this -->
 

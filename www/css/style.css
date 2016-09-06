@@ -18,12 +18,10 @@
 
 .find-game {
   background-color: #D3D3D3;
-  /*background-color: #f8f8f8;*/
 }
 
 .date-display {
   background-color: #ffffff;
-  /*font-size: 14px;*/
 }
 
 .date-nav {
@@ -33,6 +31,10 @@
 
 .date-title {
   font-size: 15px;
+}
+
+.no-games {
+  margin-top: 2%;
 }
 
 .game-display {
@@ -81,11 +83,6 @@
   width: 100%;
 }
 
-/*.location-display, .skill-display {
-  background-color: #ffffff;
-  width: 100%;
-}*/
-
 .location-title, .skill-title {
   color: #000000;
   font-size: 15px;
@@ -132,12 +129,6 @@
 .game-lower {
   background-color: #424242;
   border-color: #424242;
-}
-
-
-/* Invite Players modal styling*/
-.invite-checkbox {
-  /*float: right;*/
 }
 
 

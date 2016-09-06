@@ -1,4 +1,8 @@
 <ion-view view-title="Profile">
+  <ion-nav-buttons side="right">
+    <a class="edit-button button button-royal button-clear" ng-click="showProfilePopup(athlete)">Edit</a>
+  </ion-nav-buttons>
+
   <ion-content>
     <div class="profile-top"> <!-- Top half of page -->
       <div class="profile-pic"> <img ng-src="{{athlete.pic}}" alt="{{athlete.name}}"></div>
@@ -7,9 +11,9 @@
 
 
     <!-- Bottom half of page -->
-    <div class="item item-divider profile-divider">
+    <div class="item item-divider profile-divider tab-profile-divider">
       <span class="info-label">Info</span>
-      <a class="edit-button button button-royal button-small" ng-click="showProfilePopup(athlete)">Edit Profile</a>
+      <!-- <a class="edit-button button button-royal button-small" ng-click="showProfilePopup(athlete)">Edit Profile</a> -->
     </div>
     <a class="item item-unselectable">
       <h2><b>Year: </b>{{athlete.gradYear}}</h2>

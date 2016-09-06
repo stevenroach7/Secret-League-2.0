@@ -135,6 +135,12 @@
 }
 
 
+/* Invite Players modal styling*/
+.invite-checkbox {
+  /*float: right;*/
+}
+
+
 /* create-game styling */
 .date-item {
   line-height: 200%;
@@ -206,6 +212,10 @@
   align-items: center;
 }
 
+.tab-profile-divider {
+  line-height: 180%;
+}
+
 .info-label {
   font-size: 19px;
 }
@@ -221,7 +231,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 9%;
+  height: 8.5%;
 }
 
 .close-icon {

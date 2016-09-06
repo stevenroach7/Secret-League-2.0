@@ -144,7 +144,7 @@
         time: secondsSinceMidnight, // Current time in seconds
         sport: "Basketball",
         place: "Leonard Center Field House",
-        skillLevel: "Casual/Competitive",
+        skillLevel: "Competitive",
         minPlayers: 2,
         maxPlayers: 15,
         gameCreatorID: 0,

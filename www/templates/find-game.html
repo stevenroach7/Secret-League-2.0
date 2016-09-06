@@ -53,13 +53,17 @@
             <label class="skill-title"><b>Skill Level: </b>{{game.skillLevel}}</label>
           </ion-item>
 
+          <ion-item ng-show="showInvitePlayers(game, athlete)"class="item item-icon-right invite-players-display" ng-click="viewPlayers(game);">
+              <!-- <span class="input-label"><b>Invite Players</b></span> -->
+              <span class="invite-label">{{getNumPlayersInvited(game) | displayNumInvitedPlayers}}</span>
+              <i class="icon ion-android-person-add"></i>
+          </ion-item>
 
           <ion-item class="roster-item"ng-click="togglePlayersVisible(game);" ng-switch="game.playersVisible">
             <i ng-switch-when="false" class="icon ion-arrow-right-b roster-icon"></i>
             <i ng-switch-when="true" class="icon ion-arrow-down-b roster-icon"></i>
             <label class="roster-label">Roster: {{getNumPlayersInGame(game)}}/{{game.maxPlayers}}</label>
           </ion-item>
-
 
           <!-- TODO: Fix bug where player doesn't go away when removed sometimes -->
           <ion-item class="row roster" ng-show="game.playersVisible" ng-repeat="player in getPlayersInGame(game.id)" ng-click="viewProfile(player)">
@@ -71,11 +75,6 @@
               <label ng-show="isGameCreator(game, player)" class="creator-label">Game Creator</label>
             </div>
           </ion-item>
-
-          <!-- <ion-item ng-show="showInvitePlayers(game, athlete)"class="item item-select invite-players" ng-click="viewPlayers(game);">
-              <span class="input-label">Invite Players</span>
-              <span class="invite-display">{{getNumPlayersInvited(game) | displayNumInvitedPlayers}}</span>
-          </ion-item> -->
 
           <ion-item ng-switch="gameDisplayOptions(game)">
             <button ng-switch-when=0 class="button button-royal button-block" ng-click="leaveGame(game)">Leave Game</button>

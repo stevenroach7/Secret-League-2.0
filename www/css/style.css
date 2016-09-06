@@ -10,22 +10,39 @@
 }
 
 .item-unselectable.activated { /* The item-unselectable class is for items that are unselectable. */
-  background: #fff; /* Set color when selected to be white. It already is white so it ends up having no effect. */
+  background: #ffffff; /* Set color when selected to be white. It already is white so it ends up having no effect. */
+  border-color: #ffffff;
 }
 
 /* find-game styling */
+
+.find-game {
+  background-color: #D3D3D3;
+  /*background-color: #f8f8f8;*/
+}
+
+.date-display {
+  background-color: #ffffff;
+  /*display: block;*/
+}
+
+.date-nav {
+  margin-top: -0.8%;
+  margin-bottom: -2.8%;
+}
+
 .date-title {
-  margin-left: 5%;
-  margin-right: 5%;
+  font-size: 15px;
 }
 
 .game-display {
-  padding-top: 3%;
+  padding-top: 2%;
 }
 
 
 .game-banner {
   background-color: #424242;
+  display: flex;
   align-items: center;
   border-color: #424242;
 }
@@ -47,11 +64,6 @@
   border-left: solid 35px;
   border-right: solid 35px;
   border-color: #886aea;
-  /*margin-top: -2.8%;*/
-}
-
-.game-middle {
-  /*display: inline-block;*/
 }
 
 .location-pic {
@@ -70,10 +82,10 @@
   width: 100%;
 }
 
-.location-display, .skill-display {
-  background-color: #a2a2a2;
+/*.location-display, .skill-display {
+  background-color: #ffffff;
   width: 100%;
-}
+}*/
 
 .location-title, .skill-title {
   color: #000000;

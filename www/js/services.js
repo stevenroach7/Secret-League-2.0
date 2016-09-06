@@ -155,7 +155,7 @@
       {
         id: 1,
         date: d,
-        time: secondsSinceMidnight, // Current time in seconds
+        time: secondsSinceMidnight + 3600, // Current time in seconds
         sport: "Basketball",
         place: "Leonard Center Alumni Gym",
         skillLevel: "Casual",

@@ -76,7 +76,7 @@
             </div>
           </ion-item>
 
-          <ion-item ng-switch="gameDisplayOptions(game)">
+          <ion-item class="game-lower" ng-switch="gameDisplayOptions(game)">
             <button ng-switch-when=0 class="button button-royal button-block" ng-click="leaveGame(game)">Leave Game</button>
             <p ng-switch-when=1>Game is full</p>
             <button ng-switch-default class="button button-royal button-block" ng-click="joinGame(game)">Join Game</button>
